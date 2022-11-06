@@ -9,21 +9,39 @@
 /* Begin PBXBuildFile section */
 		AF495DBF291579C200510BF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DBE291579C200510BF4 /* AppDelegate.swift */; };
 		AF495DC1291579C200510BF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DC0291579C200510BF4 /* SceneDelegate.swift */; };
-		AF495DC3291579C200510BF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DC2291579C200510BF4 /* ViewController.swift */; };
-		AF495DC6291579C200510BF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF495DC4291579C200510BF4 /* Main.storyboard */; };
+		AF495DC3291579C200510BF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DC2291579C200510BF4 /* MainViewController.swift */; };
 		AF495DC8291579C300510BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF495DC7291579C300510BF4 /* Assets.xcassets */; };
 		AF495DCB291579C300510BF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF495DC9291579C300510BF4 /* LaunchScreen.storyboard */; };
+		AF495DDB29157DC000510BF4 /*  UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DDA29157DC000510BF4 /*  UIColor + Extension.swift */; };
+		AF495DDD29157E2400510BF4 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DDC29157E2400510BF4 /* CalendarView.swift */; };
+		AF495DDF29157E5100510BF4 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DDE29157E5100510BF4 /* WeatherView.swift */; };
+		AF495DE329165C9800510BF4 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF495DE129165C9800510BF4 /* Roboto-Medium.ttf */; };
+		AF495DE429165C9800510BF4 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF495DE229165C9800510BF4 /* Roboto-Bold.ttf */; };
+		AF495DE629165E3A00510BF4 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DE529165E3A00510BF4 /* UIView + Extension.swift */; };
+		AF495DE829165FB000510BF4 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DE729165FB000510BF4 /* UIFont + Extension.swift */; };
+		AF495DEC2916921E00510BF4 /* CalenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DEB2916921E00510BF4 /* CalenderCollectionViewCell.swift */; };
+		AF495DEE29176F5600510BF4 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DED29176F5600510BF4 /* WorkoutTableViewCell.swift */; };
+		AF495DF02917741800510BF4 /* UIStackView + Extenson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DEF2917741800510BF4 /* UIStackView + Extenson.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AF495DBB291579C200510BF4 /* Workout Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF495DBE291579C200510BF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF495DC0291579C200510BF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AF495DC2291579C200510BF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AF495DC5291579C200510BF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AF495DC2291579C200510BF4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AF495DC7291579C300510BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF495DCA291579C300510BF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF495DCC291579C300510BF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF495DDA29157DC000510BF4 /*  UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " UIColor + Extension.swift"; sourceTree = "<group>"; };
+		AF495DDC29157E2400510BF4 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		AF495DDE29157E5100510BF4 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		AF495DE129165C9800510BF4 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		AF495DE229165C9800510BF4 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		AF495DE529165E3A00510BF4 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		AF495DE729165FB000510BF4 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
+		AF495DEB2916921E00510BF4 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF495DED29176F5600510BF4 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
+		AF495DEF2917741800510BF4 /* UIStackView + Extenson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extenson.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +74,104 @@
 		AF495DBD291579C200510BF4 /* Workout Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				AF495DD229157AD900510BF4 /* Aplication */,
+				AF495DD529157B2400510BF4 /* Models */,
+				AF495DD629157B4000510BF4 /* Views */,
+				AF495DD329157AF300510BF4 /* Controllers */,
+				AF495DD829157D8400510BF4 /* Extension */,
+				AF495DD429157B0900510BF4 /* Resoursec */,
+			);
+			path = "Workout Tracker";
+			sourceTree = "<group>";
+		};
+		AF495DD229157AD900510BF4 /* Aplication */ = {
+			isa = PBXGroup;
+			children = (
 				AF495DBE291579C200510BF4 /* AppDelegate.swift */,
 				AF495DC0291579C200510BF4 /* SceneDelegate.swift */,
-				AF495DC2291579C200510BF4 /* ViewController.swift */,
-				AF495DC4291579C200510BF4 /* Main.storyboard */,
+			);
+			path = Aplication;
+			sourceTree = "<group>";
+		};
+		AF495DD329157AF300510BF4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AF495DC2291579C200510BF4 /* MainViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AF495DD429157B0900510BF4 /* Resoursec */ = {
+			isa = PBXGroup;
+			children = (
+				AF495DE029165C8200510BF4 /* Fonts */,
+				AF495DE229165C9800510BF4 /* Roboto-Bold.ttf */,
+				AF495DE129165C9800510BF4 /* Roboto-Medium.ttf */,
 				AF495DC7291579C300510BF4 /* Assets.xcassets */,
 				AF495DC9291579C300510BF4 /* LaunchScreen.storyboard */,
 				AF495DCC291579C300510BF4 /* Info.plist */,
 			);
-			path = "Workout Tracker";
+			path = Resoursec;
+			sourceTree = "<group>";
+		};
+		AF495DD529157B2400510BF4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AF495DD629157B4000510BF4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF495DD729157B5500510BF4 /* MainVC */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AF495DD729157B5500510BF4 /* MainVC */ = {
+			isa = PBXGroup;
+			children = (
+				AF495DEA2916920D00510BF4 /* Cells */,
+				AF495DDC29157E2400510BF4 /* CalendarView.swift */,
+				AF495DDE29157E5100510BF4 /* WeatherView.swift */,
+			);
+			path = MainVC;
+			sourceTree = "<group>";
+		};
+		AF495DD829157D8400510BF4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AF495DD929157DA400510BF4 /* UiKit */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		AF495DD929157DA400510BF4 /* UiKit */ = {
+			isa = PBXGroup;
+			children = (
+				AF495DDA29157DC000510BF4 /*  UIColor + Extension.swift */,
+				AF495DE529165E3A00510BF4 /* UIView + Extension.swift */,
+				AF495DE729165FB000510BF4 /* UIFont + Extension.swift */,
+				AF495DEF2917741800510BF4 /* UIStackView + Extenson.swift */,
+			);
+			path = UiKit;
+			sourceTree = "<group>";
+		};
+		AF495DE029165C8200510BF4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		AF495DEA2916920D00510BF4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AF495DEB2916921E00510BF4 /* CalenderCollectionViewCell.swift */,
+				AF495DED29176F5600510BF4 /* WorkoutTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +234,8 @@
 			files = (
 				AF495DCB291579C300510BF4 /* LaunchScreen.storyboard in Resources */,
 				AF495DC8291579C300510BF4 /* Assets.xcassets in Resources */,
-				AF495DC6291579C200510BF4 /* Main.storyboard in Resources */,
+				AF495DE429165C9800510BF4 /* Roboto-Bold.ttf in Resources */,
+				AF495DE329165C9800510BF4 /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +246,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF495DC3291579C200510BF4 /* ViewController.swift in Sources */,
+				AF495DE829165FB000510BF4 /* UIFont + Extension.swift in Sources */,
+				AF495DDD29157E2400510BF4 /* CalendarView.swift in Sources */,
+				AF495DC3291579C200510BF4 /* MainViewController.swift in Sources */,
+				AF495DEE29176F5600510BF4 /* WorkoutTableViewCell.swift in Sources */,
 				AF495DBF291579C200510BF4 /* AppDelegate.swift in Sources */,
+				AF495DDF29157E5100510BF4 /* WeatherView.swift in Sources */,
+				AF495DE629165E3A00510BF4 /* UIView + Extension.swift in Sources */,
+				AF495DEC2916921E00510BF4 /* CalenderCollectionViewCell.swift in Sources */,
+				AF495DDB29157DC000510BF4 /*  UIColor + Extension.swift in Sources */,
+				AF495DF02917741800510BF4 /* UIStackView + Extenson.swift in Sources */,
 				AF495DC1291579C200510BF4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +263,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AF495DC4291579C200510BF4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF495DC5291579C200510BF4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AF495DC9291579C300510BF4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,12 +396,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Workout Tracker/Info.plist";
+				INFOPLIST_FILE = "Workout Tracker/Resoursec/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,9 +409,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.my.Workout-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,12 +426,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Workout Tracker/Info.plist";
+				INFOPLIST_FILE = "Workout Tracker/Resoursec/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,9 +439,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.my.Workout-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
