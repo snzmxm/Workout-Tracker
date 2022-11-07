@@ -22,6 +22,10 @@
 		AF495DEC2916921E00510BF4 /* CalenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DEB2916921E00510BF4 /* CalenderCollectionViewCell.swift */; };
 		AF495DEE29176F5600510BF4 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DED29176F5600510BF4 /* WorkoutTableViewCell.swift */; };
 		AF495DF02917741800510BF4 /* UIStackView + Extenson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DEF2917741800510BF4 /* UIStackView + Extenson.swift */; };
+		AF495DF22917C38200510BF4 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DF12917C38200510BF4 /* StatisticsViewController.swift */; };
+		AF495DF42917C52C00510BF4 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DF32917C52C00510BF4 /* UILabel + Extension.swift */; };
+		AF495DF82917CA0500510BF4 /* StatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DF72917CA0500510BF4 /* StatisticsTableViewCell.swift */; };
+		AF495DFA2918131000510BF4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DF92918131000510BF4 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		AF495DEB2916921E00510BF4 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF495DED29176F5600510BF4 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		AF495DEF2917741800510BF4 /* UIStackView + Extenson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extenson.swift"; sourceTree = "<group>"; };
+		AF495DF12917C38200510BF4 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		AF495DF32917C52C00510BF4 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		AF495DF72917CA0500510BF4 /* StatisticsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewCell.swift; sourceTree = "<group>"; };
+		AF495DF92918131000510BF4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +104,9 @@
 		AF495DD329157AF300510BF4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AF495DF92918131000510BF4 /* MainTabBarController.swift */,
 				AF495DC2291579C200510BF4 /* MainViewController.swift */,
+				AF495DF12917C38200510BF4 /* StatisticsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -125,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				AF495DD729157B5500510BF4 /* MainVC */,
+				AF495DF52917C9B200510BF4 /* StatisticsVC */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,6 +165,7 @@
 				AF495DE529165E3A00510BF4 /* UIView + Extension.swift */,
 				AF495DE729165FB000510BF4 /* UIFont + Extension.swift */,
 				AF495DEF2917741800510BF4 /* UIStackView + Extenson.swift */,
+				AF495DF32917C52C00510BF4 /* UILabel + Extension.swift */,
 			);
 			path = UiKit;
 			sourceTree = "<group>";
@@ -172,6 +184,22 @@
 				AF495DED29176F5600510BF4 /* WorkoutTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		AF495DF52917C9B200510BF4 /* StatisticsVC */ = {
+			isa = PBXGroup;
+			children = (
+				AF495DF62917C9DD00510BF4 /* Cell */,
+			);
+			path = StatisticsVC;
+			sourceTree = "<group>";
+		};
+		AF495DF62917C9DD00510BF4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AF495DF72917CA0500510BF4 /* StatisticsTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,13 +276,17 @@
 			files = (
 				AF495DE829165FB000510BF4 /* UIFont + Extension.swift in Sources */,
 				AF495DDD29157E2400510BF4 /* CalendarView.swift in Sources */,
+				AF495DFA2918131000510BF4 /* MainTabBarController.swift in Sources */,
 				AF495DC3291579C200510BF4 /* MainViewController.swift in Sources */,
+				AF495DF22917C38200510BF4 /* StatisticsViewController.swift in Sources */,
+				AF495DF82917CA0500510BF4 /* StatisticsTableViewCell.swift in Sources */,
 				AF495DEE29176F5600510BF4 /* WorkoutTableViewCell.swift in Sources */,
 				AF495DBF291579C200510BF4 /* AppDelegate.swift in Sources */,
 				AF495DDF29157E5100510BF4 /* WeatherView.swift in Sources */,
 				AF495DE629165E3A00510BF4 /* UIView + Extension.swift in Sources */,
 				AF495DEC2916921E00510BF4 /* CalenderCollectionViewCell.swift in Sources */,
 				AF495DDB29157DC000510BF4 /*  UIColor + Extension.swift in Sources */,
+				AF495DF42917C52C00510BF4 /* UILabel + Extension.swift in Sources */,
 				AF495DF02917741800510BF4 /* UIStackView + Extenson.swift in Sources */,
 				AF495DC1291579C200510BF4 /* SceneDelegate.swift in Sources */,
 			);

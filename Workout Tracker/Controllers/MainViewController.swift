@@ -19,18 +19,9 @@ class MainViewController: UIViewController {
         return imageView
     }()
 
-    //Создаем лейбл имени
-    private let userNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Максим Богданов"
-        label.font = .robotoBold24()
-        label.textColor = .specialGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        //Говорим, если имя слишком длинное оно было в половину
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.5
-        return label
-    }()
+    private let userNameLabel = UILabel(text: "Максим Богданов",
+                                        font: .robotoBold24(),
+                                        textColor: .specialGray)
 
     //Создаем календарь
     private let calendarView = CalendarView()
@@ -58,14 +49,9 @@ class MainViewController: UIViewController {
         return button
     }()
 
-    private let workoutTodayLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Workout Today"
-        label.textColor = .specialLightBrown
-        label.font = .robotoMedium14()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let workoutTodayLabel = UILabel(text: "Workout Today",
+                                            font: .robotoMedium14(),
+                                            textColor: .specialLightBrown)
 
     //Таблица
     private let tableView: UITableView = {

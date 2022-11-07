@@ -34,35 +34,17 @@ class WorkoutTableViewCell: UITableViewCell {
         return imageView
     }()
 
-    //создаем лейбл Pull Ups
-    private let workoutNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Pull Ups"
-        label.textColor = .specialBlack
-        label.font = .robotoMedium22()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let workoutNameLabel = UILabel(text: "Pull Ups",
+                                           font: .robotoMedium22(),
+                                           textColor: .specialBlack)
 
-    //Add label REPS
-    private let workoutRepsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Reps: 10"
-        label.textColor = .specialGray
-        label.font = .robotoMedium16()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let workoutRepsLabel = UILabel(text: "Reps: 10",
+                                           font: .robotoMedium16(),
+                                           textColor: .specialGray)
 
-    //add label sets
-    private let workoutSetsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Sets: 2"
-        label.textColor = .specialGray
-        label.font = .robotoMedium16()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let workoutSetsLabel = UILabel(text: "Sets: 2",
+                                           font: .robotoMedium16(),
+                                           textColor: .specialGray)
 
     //add button
     lazy var startButton: UIButton = {
