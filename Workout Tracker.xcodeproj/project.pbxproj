@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF265699291A810B008CB56F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AF265698291A810B008CB56F /* Realm */; };
+		AF26569B291A810B008CB56F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AF26569A291A810B008CB56F /* RealmSwift */; };
 		AF495DBF291579C200510BF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DBE291579C200510BF4 /* AppDelegate.swift */; };
 		AF495DC1291579C200510BF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DC0291579C200510BF4 /* SceneDelegate.swift */; };
 		AF495DC3291579C200510BF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DC2291579C200510BF4 /* MainViewController.swift */; };
@@ -26,6 +28,12 @@
 		AF495DF42917C52C00510BF4 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DF32917C52C00510BF4 /* UILabel + Extension.swift */; };
 		AF495DF82917CA0500510BF4 /* StatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DF72917CA0500510BF4 /* StatisticsTableViewCell.swift */; };
 		AF495DFA2918131000510BF4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DF92918131000510BF4 /* MainTabBarController.swift */; };
+		AF495DFC2918EFE000510BF4 /* NewWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495DFB2918EFE000510BF4 /* NewWorkoutViewController.swift */; };
+		AF495E012919160800510BF4 /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495E002919160800510BF4 /* DateAndRepeatView.swift */; };
+		AF495E032919352900510BF4 /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF495E022919352900510BF4 /* RepsOrTimerView.swift */; };
+		AF63ACF8291A85CE0087718A /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF63ACF7291A85CE0087718A /* WorkoutModel.swift */; };
+		AF63ACFB291A86F60087718A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF63ACFA291A86F60087718A /* RealmManager.swift */; };
+		AF63ACFD291AA3060087718A /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF63ACFC291AA3060087718A /* Date + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +58,12 @@
 		AF495DF32917C52C00510BF4 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		AF495DF72917CA0500510BF4 /* StatisticsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewCell.swift; sourceTree = "<group>"; };
 		AF495DF92918131000510BF4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		AF495DFB2918EFE000510BF4 /* NewWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewController.swift; sourceTree = "<group>"; };
+		AF495E002919160800510BF4 /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
+		AF495E022919352900510BF4 /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
+		AF63ACF7291A85CE0087718A /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
+		AF63ACFA291A86F60087718A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		AF63ACFC291AA3060087718A /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF26569B291A810B008CB56F /* RealmSwift in Frameworks */,
+				AF265699291A810B008CB56F /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +102,7 @@
 				AF495DD529157B2400510BF4 /* Models */,
 				AF495DD629157B4000510BF4 /* Views */,
 				AF495DD329157AF300510BF4 /* Controllers */,
+				AF63ACF9291A86DA0087718A /* Services */,
 				AF495DD829157D8400510BF4 /* Extension */,
 				AF495DD429157B0900510BF4 /* Resoursec */,
 			);
@@ -107,6 +124,7 @@
 				AF495DF92918131000510BF4 /* MainTabBarController.swift */,
 				AF495DC2291579C200510BF4 /* MainViewController.swift */,
 				AF495DF12917C38200510BF4 /* StatisticsViewController.swift */,
+				AF495DFB2918EFE000510BF4 /* NewWorkoutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -127,6 +145,7 @@
 		AF495DD529157B2400510BF4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AF63ACF7291A85CE0087718A /* WorkoutModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -136,6 +155,7 @@
 			children = (
 				AF495DD729157B5500510BF4 /* MainVC */,
 				AF495DF52917C9B200510BF4 /* StatisticsVC */,
+				AF495DFD2919151E00510BF4 /* NewWorkoutVC */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,6 +186,7 @@
 				AF495DE729165FB000510BF4 /* UIFont + Extension.swift */,
 				AF495DEF2917741800510BF4 /* UIStackView + Extenson.swift */,
 				AF495DF32917C52C00510BF4 /* UILabel + Extension.swift */,
+				AF63ACFC291AA3060087718A /* Date + Extension.swift */,
 			);
 			path = UiKit;
 			sourceTree = "<group>";
@@ -202,6 +223,23 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		AF495DFD2919151E00510BF4 /* NewWorkoutVC */ = {
+			isa = PBXGroup;
+			children = (
+				AF495E002919160800510BF4 /* DateAndRepeatView.swift */,
+				AF495E022919352900510BF4 /* RepsOrTimerView.swift */,
+			);
+			path = NewWorkoutVC;
+			sourceTree = "<group>";
+		};
+		AF63ACF9291A86DA0087718A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AF63ACFA291A86F60087718A /* RealmManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -218,6 +256,10 @@
 			dependencies = (
 			);
 			name = "Workout Tracker";
+			packageProductDependencies = (
+				AF265698291A810B008CB56F /* Realm */,
+				AF26569A291A810B008CB56F /* RealmSwift */,
+			);
 			productName = "Workout Tracker";
 			productReference = AF495DBB291579C200510BF4 /* Workout Tracker.app */;
 			productType = "com.apple.product-type.application";
@@ -246,6 +288,9 @@
 				Base,
 			);
 			mainGroup = AF495DB2291579C200510BF4;
+			packageReferences = (
+				AF265697291A810B008CB56F /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = AF495DBC291579C200510BF4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -281,14 +326,20 @@
 				AF495DF22917C38200510BF4 /* StatisticsViewController.swift in Sources */,
 				AF495DF82917CA0500510BF4 /* StatisticsTableViewCell.swift in Sources */,
 				AF495DEE29176F5600510BF4 /* WorkoutTableViewCell.swift in Sources */,
+				AF63ACF8291A85CE0087718A /* WorkoutModel.swift in Sources */,
 				AF495DBF291579C200510BF4 /* AppDelegate.swift in Sources */,
 				AF495DDF29157E5100510BF4 /* WeatherView.swift in Sources */,
 				AF495DE629165E3A00510BF4 /* UIView + Extension.swift in Sources */,
 				AF495DEC2916921E00510BF4 /* CalenderCollectionViewCell.swift in Sources */,
 				AF495DDB29157DC000510BF4 /*  UIColor + Extension.swift in Sources */,
 				AF495DF42917C52C00510BF4 /* UILabel + Extension.swift in Sources */,
+				AF495DFC2918EFE000510BF4 /* NewWorkoutViewController.swift in Sources */,
 				AF495DF02917741800510BF4 /* UIStackView + Extenson.swift in Sources */,
 				AF495DC1291579C200510BF4 /* SceneDelegate.swift in Sources */,
+				AF63ACFB291A86F60087718A /* RealmManager.swift in Sources */,
+				AF495E012919160800510BF4 /* DateAndRepeatView.swift in Sources */,
+				AF495E032919352900510BF4 /* RepsOrTimerView.swift in Sources */,
+				AF63ACFD291AA3060087718A /* Date + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +553,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AF265697291A810B008CB56F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF265698291A810B008CB56F /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF265697291A810B008CB56F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		AF26569A291A810B008CB56F /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF265697291A810B008CB56F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AF495DB3291579C200510BF4 /* Project object */;
 }

@@ -1,0 +1,177 @@
+//
+//  NewWorkoutViewController.swift
+//  Workout Tracker
+//
+//  Created by SNZ on 07.11.2022.
+//
+
+import UIKit
+import RealmSwift
+
+class NewWorkoutViewController: UIViewController {
+    
+    private let newWorkoutLabel = UILabel(text: "NEW WORKOUT", font: .robotoBold24(), textColor: .specialGray)
+
+    private let nameLabel = UILabel(text: "Name")
+    private let dateAndRepeatLabel = UILabel(text: "Date and repeat")
+    private let repsOrTimerLabel = UILabel(text: "Reps or timer")
+
+    private lazy var closeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setBackgroundImage(UIImage(named: "closeButton"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private let nameTextField: UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = .specialBrown
+        textField.layer.cornerRadius = 10
+        textField.borderStyle = .none
+        textField.font = .robotoBold20()
+        textField.leftView = UIView(frame: CGRect(x: 0,
+                                                  y: 0,
+                                                  width: 15,
+                                                  height: textField.frame.height))
+        textField.leftViewMode = .always
+        textField.clearButtonMode = .always
+        textField.returnKeyType = .done
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    private lazy var saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .specialGreen
+        button.layer.cornerRadius = 10
+        button.setTitle("SAVE", for: .normal)
+        button.tintColor = .white
+        button.titleLabel?.font = .robotoBold16()
+        button.addShadowOnView()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private let dateAndRepeatStackView = DateAndRepeatView()
+    private let repsOrTimerStavkView = RepsOrTimerView()
+
+    override func viewDidLayoutSubviews() {
+        closeButton.layer.cornerRadius = closeButton.frame.width / 2
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupViews()
+        setConstraints()
+    }
+
+    //Добавление на главный экран(вью)
+    private func setupViews() {
+        view.backgroundColor = .specialBackground
+
+        view.addSubview(newWorkoutLabel)
+        view.addSubview(closeButton)
+        view.addSubview(nameLabel)
+        view.addSubview(nameTextField)
+        view.addSubview(dateAndRepeatLabel)
+        view.addSubview(dateAndRepeatStackView)
+        view.addSubview(repsOrTimerLabel)
+        view.addSubview(repsOrTimerStavkView)
+        view.addSubview(saveButton)
+    }
+
+    @objc private func closeButtonTapped() {
+        dismiss(animated: true)
+    }
+
+    @objc private func saveButtonTapped() {
+        setModel()
+        RealmManager.shared.saveWorkoutModel(model: workoutModel)
+        workoutModel = WorkoutModel()
+    }
+
+    private var workoutModel = WorkoutModel()
+
+    //метод, который собирает все данные для нашей модели
+    private func setModel() {
+        guard let nameWorkout = nameTextField.text else { return }
+        workoutModel.workoutName = nameWorkout
+
+        let dateFromPicker = dateAndRepeatStackView.setDateAndRepeat().0
+        workoutModel.workoutDate = dateFromPicker
+        workoutModel.workoutNumberOfDay = dateFromPicker.getWeekdayNumber()
+
+        workoutModel.workoutRepeat = dateAndRepeatStackView.setDateAndRepeat().1
+        //получаем значение 3-х слайдеров
+        workoutModel.workoutSets = repsOrTimerStavkView.setSliderValue().0
+        workoutModel.workoutReps = repsOrTimerStavkView.setSliderValue().1
+        workoutModel.workoutTimer = repsOrTimerStavkView.setSliderValue().2
+    }
+}
+
+//MARK: - SetConstrains
+
+extension NewWorkoutViewController {
+    private func setConstraints() {
+
+        NSLayoutConstraint.activate([
+            newWorkoutLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            newWorkoutLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            closeButton.centerYAnchor.constraint(equalTo: newWorkoutLabel.centerYAnchor),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            closeButton.heightAnchor.constraint(equalToConstant: 30),
+            closeButton.widthAnchor.constraint(equalToConstant: 30)
+        ])
+
+        NSLayoutConstraint.activate([
+            nameLabel.topAnchor.constraint(equalTo: newWorkoutLabel.bottomAnchor, constant: 10),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+
+        NSLayoutConstraint.activate([
+            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 3),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nameTextField.heightAnchor.constraint(equalToConstant: 38)
+        ])
+
+        NSLayoutConstraint.activate([
+            dateAndRepeatLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
+            dateAndRepeatLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            dateAndRepeatLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25)
+        ])
+
+        NSLayoutConstraint.activate([
+            dateAndRepeatStackView.topAnchor.constraint(equalTo: dateAndRepeatLabel.bottomAnchor, constant: 3),
+            dateAndRepeatStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            dateAndRepeatStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            dateAndRepeatStackView.heightAnchor.constraint(equalToConstant: 93)
+        ])
+
+        NSLayoutConstraint.activate([
+            repsOrTimerLabel.topAnchor.constraint(equalTo: dateAndRepeatStackView.bottomAnchor, constant: 20),
+            repsOrTimerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            repsOrTimerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+
+        NSLayoutConstraint.activate([
+            repsOrTimerStavkView.topAnchor.constraint(equalTo: repsOrTimerLabel.bottomAnchor, constant: 3),
+            repsOrTimerStavkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            repsOrTimerStavkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            repsOrTimerStavkView.heightAnchor.constraint(equalToConstant: 275)
+        ])
+
+        NSLayoutConstraint.activate([
+            saveButton.topAnchor.constraint(equalTo: repsOrTimerStavkView.bottomAnchor, constant: 20),
+            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            saveButton.heightAnchor.constraint(equalToConstant: 55)
+        ])
+    }
+}

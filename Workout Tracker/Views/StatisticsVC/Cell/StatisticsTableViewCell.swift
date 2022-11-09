@@ -41,7 +41,6 @@ class StatisticsTableViewCell: UITableViewCell {
         selectionStyle = .none
 
         addSubview(nameWorkoutLabel)
-        addSubview(labelStackView)
 
         labelStackView = UIStackView(arrangedSubviews: [beforeLabel, nowLabel],
                                 axis: .horizontal,
