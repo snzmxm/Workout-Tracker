@@ -34,6 +34,8 @@
 		AF63ACF8291A85CE0087718A /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF63ACF7291A85CE0087718A /* WorkoutModel.swift */; };
 		AF63ACFB291A86F60087718A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF63ACFA291A86F60087718A /* RealmManager.swift */; };
 		AF63ACFD291AA3060087718A /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF63ACFC291AA3060087718A /* Date + Extension.swift */; };
+		AF670C19291B8E76007079B0 /* StartWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C18291B8E76007079B0 /* StartWorkoutViewController.swift */; };
+		AF670C1E291BA3BF007079B0 /* StartWorkoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C1D291BA3BF007079B0 /* StartWorkoutViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		AF63ACF7291A85CE0087718A /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
 		AF63ACFA291A86F60087718A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		AF63ACFC291AA3060087718A /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
+		AF670C18291B8E76007079B0 /* StartWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewController.swift; sourceTree = "<group>"; };
+		AF670C1D291BA3BF007079B0 /* StartWorkoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 				AF495DC2291579C200510BF4 /* MainViewController.swift */,
 				AF495DF12917C38200510BF4 /* StatisticsViewController.swift */,
 				AF495DFB2918EFE000510BF4 /* NewWorkoutViewController.swift */,
+				AF670C18291B8E76007079B0 /* StartWorkoutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				AF495DD729157B5500510BF4 /* MainVC */,
 				AF495DF52917C9B200510BF4 /* StatisticsVC */,
 				AF495DFD2919151E00510BF4 /* NewWorkoutVC */,
+				AF670C1C291BA215007079B0 /* StartWorkoutVC */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,6 +244,14 @@
 				AF63ACFA291A86F60087718A /* RealmManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		AF670C1C291BA215007079B0 /* StartWorkoutVC */ = {
+			isa = PBXGroup;
+			children = (
+				AF670C1D291BA3BF007079B0 /* StartWorkoutViewCell.swift */,
+			);
+			path = StartWorkoutVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +349,8 @@
 				AF495DF42917C52C00510BF4 /* UILabel + Extension.swift in Sources */,
 				AF495DFC2918EFE000510BF4 /* NewWorkoutViewController.swift in Sources */,
 				AF495DF02917741800510BF4 /* UIStackView + Extenson.swift in Sources */,
+				AF670C19291B8E76007079B0 /* StartWorkoutViewController.swift in Sources */,
+				AF670C1E291BA3BF007079B0 /* StartWorkoutViewCell.swift in Sources */,
 				AF495DC1291579C200510BF4 /* SceneDelegate.swift in Sources */,
 				AF63ACFB291A86F60087718A /* RealmManager.swift in Sources */,
 				AF495E012919160800510BF4 /* DateAndRepeatView.swift in Sources */,
