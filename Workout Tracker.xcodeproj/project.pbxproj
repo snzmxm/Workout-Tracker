@@ -36,6 +36,8 @@
 		AF63ACFD291AA3060087718A /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF63ACFC291AA3060087718A /* Date + Extension.swift */; };
 		AF670C19291B8E76007079B0 /* StartWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C18291B8E76007079B0 /* StartWorkoutViewController.swift */; };
 		AF670C1E291BA3BF007079B0 /* StartWorkoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C1D291BA3BF007079B0 /* StartWorkoutViewCell.swift */; };
+		AF670C20291BA5DA007079B0 /* TimerWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C1F291BA5DA007079B0 /* TimerWorkoutViewController.swift */; };
+		AF670C23291BA96A007079B0 /* TimerWorkoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C22291BA96A007079B0 /* TimerWorkoutViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		AF63ACFC291AA3060087718A /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		AF670C18291B8E76007079B0 /* StartWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewController.swift; sourceTree = "<group>"; };
 		AF670C1D291BA3BF007079B0 /* StartWorkoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewCell.swift; sourceTree = "<group>"; };
+		AF670C1F291BA5DA007079B0 /* TimerWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkoutViewController.swift; sourceTree = "<group>"; };
+		AF670C22291BA96A007079B0 /* TimerWorkoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkoutViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 				AF495DF12917C38200510BF4 /* StatisticsViewController.swift */,
 				AF495DFB2918EFE000510BF4 /* NewWorkoutViewController.swift */,
 				AF670C18291B8E76007079B0 /* StartWorkoutViewController.swift */,
+				AF670C1F291BA5DA007079B0 /* TimerWorkoutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				AF495DF52917C9B200510BF4 /* StatisticsVC */,
 				AF495DFD2919151E00510BF4 /* NewWorkoutVC */,
 				AF670C1C291BA215007079B0 /* StartWorkoutVC */,
+				AF670C21291BA944007079B0 /* TimerWorkoutVC */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +258,14 @@
 				AF670C1D291BA3BF007079B0 /* StartWorkoutViewCell.swift */,
 			);
 			path = StartWorkoutVC;
+			sourceTree = "<group>";
+		};
+		AF670C21291BA944007079B0 /* TimerWorkoutVC */ = {
+			isa = PBXGroup;
+			children = (
+				AF670C22291BA96A007079B0 /* TimerWorkoutViewCell.swift */,
+			);
+			path = TimerWorkoutVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,11 +359,13 @@
 				AF495DDF29157E5100510BF4 /* WeatherView.swift in Sources */,
 				AF495DE629165E3A00510BF4 /* UIView + Extension.swift in Sources */,
 				AF495DEC2916921E00510BF4 /* CalenderCollectionViewCell.swift in Sources */,
+				AF670C20291BA5DA007079B0 /* TimerWorkoutViewController.swift in Sources */,
 				AF495DDB29157DC000510BF4 /*  UIColor + Extension.swift in Sources */,
 				AF495DF42917C52C00510BF4 /* UILabel + Extension.swift in Sources */,
 				AF495DFC2918EFE000510BF4 /* NewWorkoutViewController.swift in Sources */,
 				AF495DF02917741800510BF4 /* UIStackView + Extenson.swift in Sources */,
 				AF670C19291B8E76007079B0 /* StartWorkoutViewController.swift in Sources */,
+				AF670C23291BA96A007079B0 /* TimerWorkoutViewCell.swift in Sources */,
 				AF670C1E291BA3BF007079B0 /* StartWorkoutViewCell.swift in Sources */,
 				AF495DC1291579C200510BF4 /* SceneDelegate.swift in Sources */,
 				AF63ACFB291A86F60087718A /* RealmManager.swift in Sources */,
