@@ -153,6 +153,19 @@ class RepsOrTimerView: UIView {
     public func setSliderValue() -> (Int, Int, Int) {
         getSliderValue()
     }
+    //Возврашают лейблы и слайдеры на 0
+    private func refreshWorkoutObjects() {
+        numberSetsLabel.text = "0"
+        setsSlider.value = 0
+        numberRepsLabel.text = "0"
+        repsSlider.value = 0
+        timerTimeLabel.text = "0"
+        timerSlider.value = 0
+    }
+
+    public func refreshLabelsAndSliders() {
+        refreshWorkoutObjects()
+    }
 }
 
 extension RepsOrTimerView {

@@ -40,4 +40,10 @@ extension Date {
         let weekday = calendar.component(.weekday, from: self)
         return weekday
     }
+
+    //При тапе на ичеку мы должны получить дату с отступом
+    public func offsetDays(days: Int) -> Date {
+        let offsetDays = Calendar.current.date(byAdding: .day, value: -days, to: self) ?? Date()
+        return offsetDays
+    }
 }

@@ -49,6 +49,15 @@ class CalenderCollectionViewCell: UICollectionViewCell {
         addSubview(dayOfWeekLabel)
         addSubview(numberOfDayLabel)
     }
+    //Формирование ячейки
+    private func cellConfigure(numberOfDay: String, dayOfWeek: String) {
+        numberOfDayLabel.text = numberOfDay
+        dayOfWeekLabel.text = dayOfWeek
+    }
+
+    public func dateForCell(numberOfDay: String, dayOfWeek: String) {
+        cellConfigure(numberOfDay: numberOfDay, dayOfWeek: dayOfWeek)
+    }
 }
 //MARK: - setConstrains
 extension CalenderCollectionViewCell {

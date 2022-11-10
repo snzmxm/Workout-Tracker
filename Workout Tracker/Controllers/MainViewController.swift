@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SelectCollectionViewItemProtocol: AnyObject {
+    func selectItem(date: Date)
+}
+
 class MainViewController: UIViewController {
 
     //Создаем иконку под фото
@@ -114,9 +118,16 @@ class MainViewController: UIViewController {
     private func setDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
+        calendarView.cellCollectionViewDelegate = self
     }
 }
 
+//MARK: - SelectCollectionViewItemProtocol
+extension MainViewController: SelectCollectionViewItemProtocol {
+    func selectItem(date: Date) {
+        print(date)
+    }
+}
 //MARK: - UITableViewDataSource
 
 extension MainViewController: UITableViewDataSource {

@@ -38,6 +38,7 @@
 		AF670C1E291BA3BF007079B0 /* StartWorkoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C1D291BA3BF007079B0 /* StartWorkoutViewCell.swift */; };
 		AF670C20291BA5DA007079B0 /* TimerWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C1F291BA5DA007079B0 /* TimerWorkoutViewController.swift */; };
 		AF670C23291BA96A007079B0 /* TimerWorkoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C22291BA96A007079B0 /* TimerWorkoutViewCell.swift */; };
+		AF670C26291BDD9C007079B0 /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C25291BDD9C007079B0 /* SimpleAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		AF670C1D291BA3BF007079B0 /* StartWorkoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewCell.swift; sourceTree = "<group>"; };
 		AF670C1F291BA5DA007079B0 /* TimerWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkoutViewController.swift; sourceTree = "<group>"; };
 		AF670C22291BA96A007079B0 /* TimerWorkoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkoutViewCell.swift; sourceTree = "<group>"; };
+		AF670C25291BDD9C007079B0 /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				AF495DFD2919151E00510BF4 /* NewWorkoutVC */,
 				AF670C1C291BA215007079B0 /* StartWorkoutVC */,
 				AF670C21291BA944007079B0 /* TimerWorkoutVC */,
+				AF670C24291BDD77007079B0 /* Alerts */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +271,14 @@
 			path = TimerWorkoutVC;
 			sourceTree = "<group>";
 		};
+		AF670C24291BDD77007079B0 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				AF670C25291BDD9C007079B0 /* SimpleAlert.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -349,6 +360,7 @@
 			files = (
 				AF495DE829165FB000510BF4 /* UIFont + Extension.swift in Sources */,
 				AF495DDD29157E2400510BF4 /* CalendarView.swift in Sources */,
+				AF670C26291BDD9C007079B0 /* SimpleAlert.swift in Sources */,
 				AF495DFA2918131000510BF4 /* MainTabBarController.swift in Sources */,
 				AF495DC3291579C200510BF4 /* MainViewController.swift in Sources */,
 				AF495DF22917C38200510BF4 /* StatisticsViewController.swift in Sources */,

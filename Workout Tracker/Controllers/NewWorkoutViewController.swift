@@ -6,16 +6,15 @@
 //
 
 import UIKit
-import RealmSwift
 
 class NewWorkoutViewController: UIViewController {
     
     private let newWorkoutLabel = UILabel(text: "NEW WORKOUT", font: .robotoBold24(), textColor: .specialGray)
-
+    
     private let nameLabel = UILabel(text: "Name")
     private let dateAndRepeatLabel = UILabel(text: "Date and repeat")
     private let repsOrTimerLabel = UILabel(text: "Reps or timer")
-
+    
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setBackgroundImage(UIImage(named: "closeButton"), for: .normal)
@@ -23,7 +22,7 @@ class NewWorkoutViewController: UIViewController {
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         return button
     }()
-
+    
     private let nameTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .specialBrown
@@ -40,7 +39,7 @@ class NewWorkoutViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-
+    
     private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .specialGreen
@@ -53,24 +52,26 @@ class NewWorkoutViewController: UIViewController {
         button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         return button
     }()
-
+    
     private let dateAndRepeatStackView = DateAndRepeatView()
     private let repsOrTimerStavkView = RepsOrTimerView()
-
+    
     override func viewDidLayoutSubviews() {
         closeButton.layer.cornerRadius = closeButton.frame.width / 2
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupViews()
         setConstraints()
+        setDelegates()
+        addTaps()
     }
-
+    
     //Добавление на главный экран(вью)
     private func setupViews() {
         view.backgroundColor = .specialBackground
-
+        
         view.addSubview(newWorkoutLabel)
         view.addSubview(closeButton)
         view.addSubview(nameLabel)
@@ -81,36 +82,84 @@ class NewWorkoutViewController: UIViewController {
         view.addSubview(repsOrTimerStavkView)
         view.addSubview(saveButton)
     }
+    
+    private func setDelegates() {
+        nameTextField.delegate = self
+    }
 
+    private func addTaps() {
+        let tapScreen = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapScreen)
+
+        let swipeScreen = UISwipeGestureRecognizer(target: self, action: #selector(swipeHideKeyboard))
+        view.addGestureRecognizer(swipeScreen)
+        swipeScreen.cancelsTouchesInView = false
+    }
+
+    @objc private func hideKeyboard() {
+        view.endEditing(true)
+    }
+
+    @objc private func swipeHideKeyboard() {
+        view.endEditing(true)
+    }
+    
     @objc private func closeButtonTapped() {
         dismiss(animated: true)
     }
-
+    
     @objc private func saveButtonTapped() {
         setModel()
-        RealmManager.shared.saveWorkoutModel(model: workoutModel)
-        workoutModel = WorkoutModel()
+        saveModel()
     }
-
+    
     private var workoutModel = WorkoutModel()
-
+    
     //метод, который собирает все данные для нашей модели
     private func setModel() {
         guard let nameWorkout = nameTextField.text else { return }
         workoutModel.workoutName = nameWorkout
-
+        
         let dateFromPicker = dateAndRepeatStackView.setDateAndRepeat().0
         workoutModel.workoutDate = dateFromPicker
         workoutModel.workoutNumberOfDay = dateFromPicker.getWeekdayNumber()
-
+        
         workoutModel.workoutRepeat = dateAndRepeatStackView.setDateAndRepeat().1
         //получаем значение 3-х слайдеров
         workoutModel.workoutSets = repsOrTimerStavkView.setSliderValue().0
         workoutModel.workoutReps = repsOrTimerStavkView.setSliderValue().1
         workoutModel.workoutTimer = repsOrTimerStavkView.setSliderValue().2
     }
-}
 
+    private func saveModel() {
+        guard let text = nameTextField.text else { return }
+        let count = text.filter { $0.isNumber || $0.isLetter }.count
+
+        if count != 0 &&
+            workoutModel.workoutSets != 0 &&
+            (workoutModel.workoutReps != 0 || workoutModel.workoutTimer != 0) {
+            RealmManager.shared.saveWorkoutModel(model: workoutModel)
+            workoutModel = WorkoutModel()
+            refreshObjects()
+            alertOk(tittle: "SUCCESS", message: nil)
+        } else {
+            alertOk(tittle: "ERROR", message: "Enter all paremeters")
+        }
+    }
+
+    //Значения в исходное
+    private func refreshObjects() {
+        dateAndRepeatStackView.refreshDatePickerAndSwitch()
+        repsOrTimerStavkView.refreshLabelsAndSliders()
+        nameTextField.text = ""
+    }
+}
+//MARK: - UITextViewDelegate
+extension NewWorkoutViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+    }
+}
 //MARK: - SetConstrains
 
 extension NewWorkoutViewController {
