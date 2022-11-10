@@ -9,7 +9,7 @@ import UIKit
 
 class NewWorkoutViewController: UIViewController {
     
-    private let newWorkoutLabel = UILabel(text: "NEW WORKOUT", font: .robotoBold24(), textColor: .specialGray)
+    private let newWorkoutLabel = UILabel(text: "NEW WORKOUT", font: .robotoMedium24(), textColor: .specialGray)
     
     private let nameLabel = UILabel(text: "Name")
     private let dateAndRepeatLabel = UILabel(text: "Date and repeat")

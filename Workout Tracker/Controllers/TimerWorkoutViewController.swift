@@ -10,14 +10,7 @@ import UIKit
 class TimerWorkoutViewController: UIViewController {
 
     //MARK: - создание
-    private let startWorkoutLabel: UILabel = {
-        let statisticLabel = UILabel()
-        statisticLabel.text = "START WORKOUT"
-        statisticLabel.textColor = .specialGray
-        statisticLabel.font = .robotoBold24()
-        statisticLabel.translatesAutoresizingMaskIntoConstraints = false
-        return statisticLabel
-    }()
+    private let startWorkoutLabel = UILabel(text: "START WORKOUT", font: .robotoMedium24(), textColor: .specialGray)
 
     private lazy var cloceButton: UIButton = {
         let button = UIButton(type: .system)

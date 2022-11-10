@@ -39,6 +39,7 @@
 		AF670C20291BA5DA007079B0 /* TimerWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C1F291BA5DA007079B0 /* TimerWorkoutViewController.swift */; };
 		AF670C23291BA96A007079B0 /* TimerWorkoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C22291BA96A007079B0 /* TimerWorkoutViewCell.swift */; };
 		AF670C26291BDD9C007079B0 /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C25291BDD9C007079B0 /* SimpleAlert.swift */; };
+		AF670C28291CBE2A007079B0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C27291CBE2A007079B0 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		AF670C1F291BA5DA007079B0 /* TimerWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkoutViewController.swift; sourceTree = "<group>"; };
 		AF670C22291BA96A007079B0 /* TimerWorkoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkoutViewCell.swift; sourceTree = "<group>"; };
 		AF670C25291BDD9C007079B0 /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
+		AF670C27291CBE2A007079B0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				AF495DFB2918EFE000510BF4 /* NewWorkoutViewController.swift */,
 				AF670C18291B8E76007079B0 /* StartWorkoutViewController.swift */,
 				AF670C1F291BA5DA007079B0 /* TimerWorkoutViewController.swift */,
+				AF670C27291CBE2A007079B0 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				AF495DFA2918131000510BF4 /* MainTabBarController.swift in Sources */,
 				AF495DC3291579C200510BF4 /* MainViewController.swift in Sources */,
 				AF495DF22917C38200510BF4 /* StatisticsViewController.swift in Sources */,
+				AF670C28291CBE2A007079B0 /* ProfileViewController.swift in Sources */,
 				AF495DF82917CA0500510BF4 /* StatisticsTableViewCell.swift in Sources */,
 				AF495DEE29176F5600510BF4 /* WorkoutTableViewCell.swift in Sources */,
 				AF63ACF8291A85CE0087718A /* WorkoutModel.swift in Sources */,

@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
         return imageView
     }()
 
-    private let userNameLabel = UILabel(text: "Максим Богданов",
+    private let userNameLabel = UILabel(text: "Maxim Bogdanov",
                                         font: .robotoBold24(),
                                         textColor: .specialGray)
 

@@ -9,7 +9,7 @@ import UIKit
 
 class StatisticsViewController: UIViewController {
 
-    private let statisticsLabel = UILabel(text: "STATISTICS", font: .robotoBold24(), textColor: .specialGray)
+    private let statisticsLabel = UILabel(text: "STATISTICS", font: .robotoMedium24(), textColor: .specialGray)
 
     private let exercisesLabel = UILabel(text: "Exercises")
 

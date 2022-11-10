@@ -9,7 +9,7 @@ import UIKit
 
 class StartWorkoutViewController: UIViewController {
     
-    private let startWorkoutLabel = UILabel(text: "START WORKOUT", font: .robotoBold24(), textColor: .specialGray)
+    private let startWorkoutLabel = UILabel(text: "START WORKOUT", font: .robotoMedium24(), textColor: .specialGray)
 
     private lazy var cloceButton: UIButton = {
         let button = UIButton(type: .system)
