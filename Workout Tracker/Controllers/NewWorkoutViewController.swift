@@ -114,6 +114,7 @@ class NewWorkoutViewController: UIViewController {
     }
     
     private var workoutModel = WorkoutModel()
+    private let testImage = UIImage(named: "biceps")
     
     //метод, который собирает все данные для нашей модели
     private func setModel() {
@@ -129,6 +130,9 @@ class NewWorkoutViewController: UIViewController {
         workoutModel.workoutSets = repsOrTimerStavkView.setSliderValue().0
         workoutModel.workoutReps = repsOrTimerStavkView.setSliderValue().1
         workoutModel.workoutTimer = repsOrTimerStavkView.setSliderValue().2
+
+        guard let imageData = testImage?.pngData() else { return }
+        workoutModel.workoutImage = imageData
     }
 
     private func saveModel() {

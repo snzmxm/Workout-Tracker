@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol SelectCollectionViewItemProtocol: AnyObject {
     func selectItem(date: Date)
@@ -57,6 +58,14 @@ class MainViewController: UIViewController {
                                             font: .robotoMedium14(),
                                             textColor: .specialLightBrown)
 
+    private let noWorkoutImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "noWorkout")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
     //Таблица
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -75,12 +84,22 @@ class MainViewController: UIViewController {
     //айди для таблицы
     private let idWorkoutTableVIewCell = "idWorkoutTableVIewCell"
 
+    private let localRealm = try! Realm()
+    //Будем получать массив наших тренировок
+    private var workoutArray: Results<WorkoutModel>!
+
     //MARK: - дидлоад
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
         //Чтобы иконка была круглой
         userPhotoImageView.layer.cornerRadius = userPhotoImageView.frame.width / 2
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getWorkouts(date: Date())
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -105,6 +124,8 @@ class MainViewController: UIViewController {
 
         view.addSubview(workoutTodayLabel)
 
+        view.addSubview(noWorkoutImageView)
+
         view.addSubview(tableView)
         tableView.register(WorkoutTableViewCell.self, forCellReuseIdentifier: idWorkoutTableVIewCell)
     }
@@ -120,12 +141,44 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         calendarView.cellCollectionViewDelegate = self
     }
-}
 
+    //Получаем тренировки из базы данных
+    private func getWorkouts(date: Date) {
+        let weekday = date.getWeekdayNumber()
+        let dateStart = date.startEndDate().0
+        let dateEnd = date.startEndDate().1
+
+        let predicateRepeat = NSPredicate(format: "workoutNumberOfDay = \(weekday) AND workoutRepeat = true")
+        let predicateUnrepeat = NSPredicate(format: "workoutRepeat = false AND workoutDate BETWEEN %@",[dateStart, dateEnd])
+        let compound = NSCompoundPredicate(type: .or, subpredicates: [predicateRepeat, predicateUnrepeat])
+
+        workoutArray = localRealm.objects(WorkoutModel.self).filter(compound).sorted(byKeyPath: "workoutName")
+
+        tableView.reloadData()
+        checkWorkoutToday()
+    }
+
+    //если нет тренировок показываем, что нет тренировок, есои есть показываем нашу таблицу
+    private func checkWorkoutToday() {
+        if workoutArray.count == 0 {
+            noWorkoutImageView.isHidden = false
+            tableView.isHidden = true
+        } else {
+            noWorkoutImageView.isHidden = true
+            tableView.isHidden = false
+        }
+    }
+}
+//MARK: - StartWorkoutProtocol
+extension MainViewController: StartWorkoutProtocol {
+    func startButtonTaped(model: WorkoutModel) {
+        print(model)
+    }
+}
 //MARK: - SelectCollectionViewItemProtocol
 extension MainViewController: SelectCollectionViewItemProtocol {
     func selectItem(date: Date) {
-        print(date)
+       getWorkouts(date: date)
     }
 }
 //MARK: - UITableViewDataSource
@@ -133,7 +186,7 @@ extension MainViewController: SelectCollectionViewItemProtocol {
 extension MainViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        workoutArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,15 +194,31 @@ extension MainViewController: UITableViewDataSource {
                 WorkoutTableViewCell else {
             return UITableViewCell()
         }
+        let model = workoutArray[indexPath.row]
+        cell.cellConfigure(model: model)
+        cell.cellStartWorkoutDelegate = self
         return cell
     }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDelegate
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    //удаление по свайпу
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "") { _, _, _ in
+            let deleteModel = self.workoutArray[indexPath.row]
+            RealmManager.shared.deleteWorkoutModel(model: deleteModel)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
+        }
+        action.backgroundColor = .specialBackground
+        action.image = UIImage(named: "delete")
+
+        return UISwipeActionsConfiguration(actions: [action])
     }
 }
 //MARK: - SetConstrains
@@ -201,6 +270,13 @@ extension MainViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        ])
+
+        NSLayoutConstraint.activate([
+            noWorkoutImageView.topAnchor.constraint(equalTo: workoutTodayLabel.bottomAnchor, constant: 0),
+            noWorkoutImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            noWorkoutImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            noWorkoutImageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1)
         ])
     }
 }

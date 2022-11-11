@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol StartWorkoutProtocol: AnyObject {
+    func startButtonTaped(model: WorkoutModel)
+}
+
 class WorkoutTableViewCell: UITableViewCell {
 
     private let backgroundCell: UIView = {
@@ -51,9 +55,6 @@ class WorkoutTableViewCell: UITableViewCell {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 10
         button.addShadowOnView()
-        button.backgroundColor = .specialYellow
-        button.tintColor = .specialDarkGreen
-        button.setTitle("START", for: .normal)
         button.titleLabel?.font = .robotoBold16()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
@@ -61,6 +62,9 @@ class WorkoutTableViewCell: UITableViewCell {
     }()
 
     var labelStackView = UIStackView()
+
+    var workoutModel = WorkoutModel()
+    weak var cellStartWorkoutDelegate: StartWorkoutProtocol?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -90,7 +94,38 @@ class WorkoutTableViewCell: UITableViewCell {
     }
 
     @objc private func startButtonTapped() {
-        print("startButtonTapped")
+        cellStartWorkoutDelegate?.startButtonTaped(model: workoutModel)
+    }
+    //получаем модель и раскидываем по лейблам
+    func cellConfigure(model: WorkoutModel) {
+
+        workoutModel = model
+        
+        workoutNameLabel.text = model.workoutName
+
+        let (min, sec) = { (secs: Int) -> (Int, Int) in
+            return (secs / 60, secs % 60)}(Int(model.workoutTimer))
+
+        workoutSetsLabel.text = "Sets: \(model.workoutSets)"
+        workoutRepsLabel.text = model.workoutTimer == 0 ? "Reps: \(model.workoutReps)" : "Timer: \(min) min \(sec) sec"
+
+        //если тренировка завершена делаем кнопку начала тренировки не активной
+        if model.workoutStatus {
+            startButton.setTitle("COMPLETE", for: .normal)
+            startButton.tintColor = .white
+            startButton.backgroundColor = .specialGreen
+            startButton.isEnabled = false
+        } else {
+            startButton.setTitle("START", for: .normal)
+            startButton.tintColor = .specialDarkGreen
+            startButton.backgroundColor = .specialYellow
+            startButton.isEnabled = true
+        }
+
+        guard let imageData = model.workoutImage else { return }
+        guard let image = UIImage(data: imageData) else { return }
+
+        workoutImageView.image = image.withRenderingMode(.alwaysTemplate)
     }
 }
 

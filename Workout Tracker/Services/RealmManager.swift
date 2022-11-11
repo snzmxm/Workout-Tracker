@@ -19,4 +19,10 @@ class RealmManager {
             localRealm.add(model)
         }
     }
+    // метод для удаления
+    func deleteWorkoutModel(model: WorkoutModel) {
+        try! localRealm.write {
+            localRealm.delete(model)
+        }
+    }
 }
