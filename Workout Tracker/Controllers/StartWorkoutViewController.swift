@@ -11,7 +11,7 @@ class StartWorkoutViewController: UIViewController {
     
     private let startWorkoutLabel = UILabel(text: "START WORKOUT", font: .robotoMedium24(), textColor: .specialGray)
 
-    private lazy var cloceButton: UIButton = {
+    private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setBackgroundImage(UIImage(named: "closeButton"), for: .normal)
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
@@ -58,6 +58,10 @@ class StartWorkoutViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    override func viewDidLayoutSubviews() {
+        closeButton.layer.cornerRadius = closeButton.frame.height / 2
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,7 +75,7 @@ class StartWorkoutViewController: UIViewController {
         view.backgroundColor = .specialBackground
 
         view.addSubview(startWorkoutLabel)
-        view.addSubview(cloceButton)
+        view.addSubview(closeButton)
         view.addSubview(startWorkoutImage)
         view.addSubview(detailsLabel)
         view.addSubview(workoutParametersView)
@@ -132,10 +136,10 @@ extension StartWorkoutViewController {
         ])
 
         NSLayoutConstraint.activate([
-            cloceButton.centerYAnchor.constraint(equalTo: startWorkoutLabel.centerYAnchor),
-            cloceButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            cloceButton.heightAnchor.constraint(equalToConstant: 30),
-            cloceButton.widthAnchor.constraint(equalToConstant: 30)
+            closeButton.centerYAnchor.constraint(equalTo: startWorkoutLabel.centerYAnchor),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            closeButton.heightAnchor.constraint(equalToConstant: 30),
+            closeButton.widthAnchor.constraint(equalToConstant: 30)
             
         ])
 

@@ -16,7 +16,7 @@ class TimerWorkoutViewCell: UIView {
 
     //MARK: - Cозадние
 
-    private let nameWorkoutlabel = UILabel(text: "Squats",
+     let nameWorkoutlabel = UILabel(text: "Squats",
                                            font: .robotoMedium24(),
                                            textColor: .specialGray)
     //SETS
@@ -25,7 +25,7 @@ class TimerWorkoutViewCell: UIView {
                                     font: .robotoMedium18(),
                                     textColor: .specialGray)
 
-    private let numberSetsLabel = UILabel(text: "1/4",
+     let numberSetsLabel = UILabel(text: "1/4",
                                           font: .robotoMedium24(),
                                           textColor: .specialGray)
     private let setsLineView: UIView = {
@@ -40,7 +40,7 @@ class TimerWorkoutViewCell: UIView {
                                     font: .robotoMedium18(),
                                     textColor: .specialGray)
 
-    private let numberTimeOfSetLabel = UILabel(text: "1 min 30 sec",
+     let numberOfTimerLabel = UILabel(text: "10",
                                           font: .robotoMedium24(),
                                           textColor: .specialGray)
     private let timeOfSetLineView: UIView = {
@@ -51,7 +51,7 @@ class TimerWorkoutViewCell: UIView {
     }()
 
     //Cоздаем кнопку редактировать
-    private lazy var editingButton: UIButton = {
+     lazy var editingButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Editing", for: .normal)
         button.tintColor = .specialDarkGreen
@@ -106,12 +106,14 @@ class TimerWorkoutViewCell: UIView {
         setsStackView = UIStackView(arrangedSubviews: [setsLabel, numberSetsLabel],
                                     axis: .horizontal,
                                     spacing: 10)
+        setsStackView.distribution = .equalSpacing
         addSubview(setsStackView)
         addSubview(setsLineView)
 
-        timeOfSetStack = UIStackView(arrangedSubviews: [timeOfSetLabel, numberTimeOfSetLabel],
+        timeOfSetStack = UIStackView(arrangedSubviews: [timeOfSetLabel, numberOfTimerLabel],
                                     axis: .horizontal,
                                     spacing: 10)
+        timeOfSetStack.distribution = .equalSpacing
         addSubview(timeOfSetStack)
         addSubview(timeOfSetLineView)
         addSubview(editingButton)

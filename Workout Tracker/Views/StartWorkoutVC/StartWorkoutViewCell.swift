@@ -106,12 +106,14 @@ class StartWorkoutViewCell: UIView {
         setsStackView = UIStackView(arrangedSubviews: [setsLabel, numberSetsLabel],
                                     axis: .horizontal,
                                     spacing: 10)
+        setsStackView.distribution = .equalSpacing
         addSubview(setsStackView)
         addSubview(setsLineView)
 
         repsStackView = UIStackView(arrangedSubviews: [repsLabel, numberRepsLabel],
                                     axis: .horizontal,
-                                    spacing: 11)
+                                    spacing: 10)
+        repsStackView.distribution = .equalSpacing
         addSubview(repsStackView)
         addSubview(repsLineView)
         addSubview(editingButton)
