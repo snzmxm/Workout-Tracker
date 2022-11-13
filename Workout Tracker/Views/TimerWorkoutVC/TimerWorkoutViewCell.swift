@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol NextSetTimerProtocol: AnyObject {
+    func nextSetTimerTapped()
+    func editingTimerTapped()
+}
+
 class TimerWorkoutViewCell: UIView {
 
     //MARK: - Cозадние
@@ -58,7 +63,7 @@ class TimerWorkoutViewCell: UIView {
     }()
 
     @objc private func editingButtonTapped() {
-        print("editingButtonTapped")
+        cellNextSetTimerDelegate?.editingTimerTapped()
     }
 
     //add button next set
@@ -75,8 +80,10 @@ class TimerWorkoutViewCell: UIView {
         return button
     }()
 
+    weak var cellNextSetTimerDelegate: NextSetTimerProtocol?
+
     @objc private func nextSetButtonTapped() {
-        print("nextSetButtonTapped")
+        cellNextSetTimerDelegate?.nextSetTimerTapped()
     }
     //MARK: - Добавление на вью
     override init(frame: CGRect) {

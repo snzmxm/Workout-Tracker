@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol NextSetProtocol: AnyObject {
+    func nextSetTapped()
+    func editingTapped()
+}
+
 class StartWorkoutViewCell: UIView {
 
     //MARK: - Cозадние
 
-    private let nameWorkoutlabel = UILabel(text: "Biceps",
+     let nameWorkoutlabel = UILabel(text: "Name",
                                            font: .robotoMedium24(),
                                            textColor: .specialGray)
     //SETS
@@ -20,7 +25,7 @@ class StartWorkoutViewCell: UIView {
                                     font: .robotoMedium18(),
                                     textColor: .specialGray)
 
-    private let numberSetsLabel = UILabel(text: "1/4",
+     let numberSetsLabel = UILabel(text: "1/4",
                                           font: .robotoMedium24(),
                                           textColor: .specialGray)
     private let setsLineView: UIView = {
@@ -31,11 +36,11 @@ class StartWorkoutViewCell: UIView {
     }()
     //REPS
     private var repsStackView = UIStackView()
-    private let repsLabel = UILabel(text: "Reps",
+     let repsLabel = UILabel(text: "Reps",
                                     font: .robotoMedium18(),
                                     textColor: .specialGray)
 
-    private let numberRepsLabel = UILabel(text: "20",
+     let numberRepsLabel = UILabel(text: "20",
                                           font: .robotoMedium24(),
                                           textColor: .specialGray)
     private let repsLineView: UIView = {
@@ -44,6 +49,8 @@ class StartWorkoutViewCell: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    weak var cellNextSetDelegate: NextSetProtocol?
 
     //Cоздаем кнопку редактировать
     private lazy var editingButton: UIButton = {
@@ -58,7 +65,7 @@ class StartWorkoutViewCell: UIView {
     }()
 
     @objc private func editingButtonTapped() {
-        print("editingButtonTapped")
+        cellNextSetDelegate?.editingTapped()
     }
 
     //add button next set
@@ -76,7 +83,7 @@ class StartWorkoutViewCell: UIView {
     }()
 
     @objc private func nextSetButtonTapped() {
-        print("nextSetButtonTapped")
+        cellNextSetDelegate?.nextSetTapped()
     }
     //MARK: - Добавление на вью
     override init(frame: CGRect) {
@@ -104,7 +111,7 @@ class StartWorkoutViewCell: UIView {
 
         repsStackView = UIStackView(arrangedSubviews: [repsLabel, numberRepsLabel],
                                     axis: .horizontal,
-                                    spacing: 10)
+                                    spacing: 11)
         addSubview(repsStackView)
         addSubview(repsLineView)
         addSubview(editingButton)
@@ -123,39 +130,43 @@ extension StartWorkoutViewCell {
 
         NSLayoutConstraint.activate([
             setsStackView.topAnchor.constraint(equalTo: nameWorkoutlabel.bottomAnchor,constant: 10),
-            setsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            setsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
+            setsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            setsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            setsStackView.heightAnchor.constraint(equalToConstant: 25)
         ])
 
         NSLayoutConstraint.activate([
-            setsLineView.topAnchor.constraint(equalTo: setsStackView.bottomAnchor, constant: 0),
-            setsLineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            setsLineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            setsLineView.topAnchor.constraint(equalTo: setsStackView.bottomAnchor, constant: 2),
+            setsLineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            setsLineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             setsLineView.heightAnchor.constraint(equalToConstant: 1)
         ])
 
         NSLayoutConstraint.activate([
             repsStackView.topAnchor.constraint(equalTo: setsLineView.bottomAnchor, constant: 20),
-            repsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            repsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
+            repsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            repsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            repsStackView.heightAnchor.constraint(equalToConstant: 25)
         ])
 
         NSLayoutConstraint.activate([
-            repsLineView.topAnchor.constraint(equalTo: repsStackView.bottomAnchor, constant: 0),
-            repsLineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            repsLineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            repsLineView.topAnchor.constraint(equalTo: repsStackView.bottomAnchor, constant: 2),
+            repsLineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            repsLineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             repsLineView.heightAnchor.constraint(equalToConstant: 1)
         ])
 
         NSLayoutConstraint.activate([
-            editingButton.topAnchor.constraint(equalTo: repsLineView.bottomAnchor, constant: 5),
-            editingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
+            editingButton.topAnchor.constraint(equalTo: repsLineView.bottomAnchor, constant: 10),
+            editingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            editingButton.heightAnchor.constraint(equalToConstant: 20),
+            editingButton.widthAnchor.constraint(equalToConstant: 80)
         ])
 
         NSLayoutConstraint.activate([
             nextSetButton.topAnchor.constraint(equalTo: editingButton.bottomAnchor, constant: 10),
-            nextSetButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            nextSetButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            nextSetButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            nextSetButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             nextSetButton.heightAnchor.constraint(equalToConstant: 45)
         ])
     }

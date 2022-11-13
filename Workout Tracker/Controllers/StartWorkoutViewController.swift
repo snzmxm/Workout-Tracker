@@ -23,7 +23,12 @@ class StartWorkoutViewController: UIViewController {
 
     private let detailsLabel = UILabel(text: "Details")
 
-    private let detailsStack = StartWorkoutViewCell()
+    private let workoutParametersView = StartWorkoutViewCell()
+
+    var workoutModel = WorkoutModel()
+    let customAlert = CustomAlert()
+
+    private var numberOfSet = 1
 
     //add button finish
     lazy var finishButton: UIButton = {
@@ -40,11 +45,17 @@ class StartWorkoutViewController: UIViewController {
     }()
 
     @objc private func finishButtonTapped() {
-        print("finishButtonTapped")
+        if numberOfSet == workoutModel.workoutSets {
+            dismiss(animated: true)
+            RealmManager.shared.updateStatusWorkoutModel(model: workoutModel)
+        } else {
+            alertOkCancel(title: "WARNING", message: "You haven't finished your workout") {
+                self.dismiss(animated: true)
+            }
+        }
     }
-
     @objc private func closeButtonTapped() {
-        print("closeButtonTapped")
+        dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -52,6 +63,8 @@ class StartWorkoutViewController: UIViewController {
 
         setupViews()
         setConstraints()
+        setDelegates()
+        setWorkoutsParameters()
     }
 
     private func  setupViews() {
@@ -61,9 +74,13 @@ class StartWorkoutViewController: UIViewController {
         view.addSubview(cloceButton)
         view.addSubview(startWorkoutImage)
         view.addSubview(detailsLabel)
-        view.addSubview(detailsStack)
+        view.addSubview(workoutParametersView)
         view.addSubview(finishButton)
 
+    }
+
+    private func setDelegates() {
+        workoutParametersView.cellNextSetDelegate = self
     }
 
     private func addImage(width named: String) -> UIImageView {
@@ -72,8 +89,41 @@ class StartWorkoutViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }
-}
 
+    private func setWorkoutsParameters() {
+        workoutParametersView.nameWorkoutlabel.text = workoutModel.workoutName
+        workoutParametersView.numberSetsLabel.text = "\(numberOfSet)/\(workoutModel.workoutSets)"
+        workoutParametersView.numberRepsLabel.text = "\(workoutModel.workoutReps)"
+    }
+}
+//MARK: - NextSetProtocol
+extension StartWorkoutViewController: NextSetProtocol {
+
+    func editingTapped() {
+        customAlert.customAlert(viewController: self,
+                                repsTimer: "Reps") { [self] sets, reps in
+            if sets != "" && reps != "" {
+                workoutParametersView.numberSetsLabel.text = "\(numberOfSet)/\(sets)"
+                workoutParametersView.numberRepsLabel.text = reps
+                guard let numberOfSets = Int(sets),
+                      let numberOfReps = Int(reps) else { return }
+                RealmManager.shared.updateSetsRepsWorkoutModel(model: workoutModel,
+                                                               sets: numberOfSets,
+                                                               reps: numberOfReps)
+            }
+        }
+    }
+
+    func nextSetTapped() {
+        if numberOfSet < workoutModel.workoutSets {
+            numberOfSet += 1
+            workoutParametersView.numberSetsLabel.text = "\(numberOfSet)/\(workoutModel.workoutSets)"
+        } else {
+            alertOk(tittle: "ERROR", message: "Finish your workout")
+        }
+    }
+}
+//MARK: - setConstraints
 extension StartWorkoutViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
@@ -103,14 +153,14 @@ extension StartWorkoutViewController {
         ])
 
         NSLayoutConstraint.activate([
-            detailsStack.topAnchor.constraint(equalTo: detailsLabel.bottomAnchor, constant: 0),
-            detailsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            detailsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            detailsStack.heightAnchor.constraint(equalToConstant: 238)
+            workoutParametersView.topAnchor.constraint(equalTo: detailsLabel.bottomAnchor, constant: 5),
+            workoutParametersView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            workoutParametersView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            workoutParametersView.heightAnchor.constraint(equalToConstant: 238)
         ])
 
         NSLayoutConstraint.activate([
-            finishButton.topAnchor.constraint(equalTo: detailsStack.bottomAnchor, constant: 15),
+            finishButton.topAnchor.constraint(equalTo: workoutParametersView.bottomAnchor, constant: 15),
             finishButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             finishButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             finishButton.heightAnchor.constraint(equalToConstant: 55)

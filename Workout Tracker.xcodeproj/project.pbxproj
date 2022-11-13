@@ -40,6 +40,8 @@
 		AF670C23291BA96A007079B0 /* TimerWorkoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C22291BA96A007079B0 /* TimerWorkoutViewCell.swift */; };
 		AF670C26291BDD9C007079B0 /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C25291BDD9C007079B0 /* SimpleAlert.swift */; };
 		AF670C28291CBE2A007079B0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF670C27291CBE2A007079B0 /* ProfileViewController.swift */; };
+		AF8ECE30291FA0DE007E0C5B /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE2F291FA0DE007E0C5B /* CustomAlert.swift */; };
+		AF8ECE32291FF63F007E0C5B /* OkCancelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE31291FF63F007E0C5B /* OkCancelAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		AF670C22291BA96A007079B0 /* TimerWorkoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkoutViewCell.swift; sourceTree = "<group>"; };
 		AF670C25291BDD9C007079B0 /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 		AF670C27291CBE2A007079B0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AF8ECE2F291FA0DE007E0C5B /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		AF8ECE31291FF63F007E0C5B /* OkCancelAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkCancelAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				AF670C25291BDD9C007079B0 /* SimpleAlert.swift */,
+				AF8ECE2F291FA0DE007E0C5B /* CustomAlert.swift */,
+				AF8ECE31291FF63F007E0C5B /* OkCancelAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -362,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF495DE829165FB000510BF4 /* UIFont + Extension.swift in Sources */,
+				AF8ECE32291FF63F007E0C5B /* OkCancelAlert.swift in Sources */,
 				AF495DDD29157E2400510BF4 /* CalendarView.swift in Sources */,
 				AF670C26291BDD9C007079B0 /* SimpleAlert.swift in Sources */,
 				AF495DFA2918131000510BF4 /* MainTabBarController.swift in Sources */,
@@ -388,6 +395,7 @@
 				AF495E012919160800510BF4 /* DateAndRepeatView.swift in Sources */,
 				AF495E032919352900510BF4 /* RepsOrTimerView.swift in Sources */,
 				AF63ACFD291AA3060087718A /* Date + Extension.swift in Sources */,
+				AF8ECE30291FA0DE007E0C5B /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,4 +25,17 @@ class RealmManager {
             localRealm.delete(model)
         }
     }
+    //при изменении данных обновляем базу данных
+    func updateSetsRepsWorkoutModel(model: WorkoutModel, sets: Int, reps: Int) {
+        try! localRealm.write {
+            model.workoutSets = sets
+            model.workoutReps = reps
+        }
+    }
+
+    func updateStatusWorkoutModel(model: WorkoutModel) {
+        try! localRealm.write {
+            model.workoutStatus = true
+        }
+    }
 }
