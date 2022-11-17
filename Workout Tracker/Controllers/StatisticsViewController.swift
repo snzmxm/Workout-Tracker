@@ -48,12 +48,33 @@ class StatisticsViewController: UIViewController {
         return segmentedControl
     }()
 
+    private let nameTextField: UITextField = {
+       let textField = UITextField()
+        textField.backgroundColor = .specialBrown
+        textField.borderStyle = .none
+        textField.layer.cornerRadius = 10
+        textField.textColor = .specialGray
+        textField.font = .robotoBold20()
+        textField.leftView = UIView(frame: CGRect(x: 0,
+                                                  y: 0,
+                                                  width: 15,
+                                                  height: textField.frame.height))
+        textField.leftViewMode = .always
+        textField.clearButtonMode = .always
+        textField.returnKeyType = .done
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
     private let idWorkoutTableVIewCell = "idWorkoutTableVIewCell"
 
     private let localRealm = try! Realm()
     private var workoutArray: Results<WorkoutModel>!
 
     private var differenceArray = [DifferenceWorkout]()
+    private var filtredArray = [DifferenceWorkout]()
+
+    private var isFiltred = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -78,6 +99,7 @@ class StatisticsViewController: UIViewController {
 
         view.addSubview(statisticsLabel)
         view.addSubview(segmentedControl)
+        view.addSubview(nameTextField)
         view.addSubview(exercisesLabel)
 
         view.addSubview(tableView)
@@ -87,6 +109,7 @@ class StatisticsViewController: UIViewController {
     private func setDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
+        nameTextField.delegate = self
     }
 
     @objc private func segmentedChange() {
@@ -146,6 +169,15 @@ class StatisticsViewController: UIViewController {
         getDifferenceModel(dateStart: dateToday.offsetDays(days: 7))
         tableView.reloadData()
     }
+
+    private func filtringWorkouts(text: String) {
+
+        for workout in differenceArray {
+            if workout.name.lowercased().contains(text.lowercased()) {
+                filtredArray.append(workout)
+            }
+        }
+    }
 }
 
 //MARK: - UITableViewDataSource
@@ -153,7 +185,7 @@ class StatisticsViewController: UIViewController {
 extension StatisticsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        differenceArray.count
+        isFiltred ? filtredArray.count : differenceArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -161,18 +193,48 @@ extension StatisticsViewController: UITableViewDataSource {
                 StatisticsTableViewCell else {
             return UITableViewCell()
         }
-        let differenceModel = differenceArray[indexPath.row]
+        let differenceModel = isFiltred ? filtredArray[indexPath.row] : differenceArray[indexPath.row]
         cell.cellConfigure(differenceWorkout: differenceModel)
         return cell
     }
 }
-    //MARK: - UITableViewDataSource
+    //MARK: - UITableViewDelegate
 
     extension StatisticsViewController: UITableViewDelegate {
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 55
         }
     }
+
+//MARK: - UITextFieldDelegate
+
+extension StatisticsViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        if let text = textField.text, let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string)
+            filtredArray = [DifferenceWorkout]()
+            isFiltred = updatedText.count > 0
+            filtringWorkouts(text: updatedText)
+            tableView.reloadData()
+        }
+        return true
+    }
+
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        isFiltred = false
+        differenceArray = [DifferenceWorkout]()
+        let dateToday = Date().localDate()
+        getDifferenceModel(dateStart: dateToday.offsetDays(days: 7))
+        tableView.reloadData()
+        return true
+    }
+}
     //MARK: - SetConstrains
 
     extension StatisticsViewController {
@@ -190,7 +252,14 @@ extension StatisticsViewController: UITableViewDataSource {
             ])
 
             NSLayoutConstraint.activate([
-                exercisesLabel.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
+                nameTextField.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
+                nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                nameTextField.heightAnchor.constraint(equalToConstant: 38)
+            ])
+
+            NSLayoutConstraint.activate([
+                exercisesLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10),
                 exercisesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
                 exercisesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
             ])
