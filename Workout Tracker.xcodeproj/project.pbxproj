@@ -43,6 +43,17 @@
 		AF8ECE30291FA0DE007E0C5B /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE2F291FA0DE007E0C5B /* CustomAlert.swift */; };
 		AF8ECE32291FF63F007E0C5B /* OkCancelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE31291FF63F007E0C5B /* OkCancelAlert.swift */; };
 		AF8ECE34292110FC007E0C5B /* Int + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE33292110FC007E0C5B /* Int + Extensions.swift */; };
+		AF8ECE372923635F007E0C5B /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE362923635F007E0C5B /* ProfileCollectionViewCell.swift */; };
+		AF8ECE3E292393DC007E0C5B /* SettingProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE3D292393DC007E0C5B /* SettingProfileViewController.swift */; };
+		AF8ECE4029239DAF007E0C5B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE3F29239DAF007E0C5B /* UserModel.swift */; };
+		AF8ECE422923B202007E0C5B /* GallaryOrPhotoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE412923B202007E0C5B /* GallaryOrPhotoAlert.swift */; };
+		AF8ECE442923CD97007E0C5B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE432923CD97007E0C5B /* Notifications.swift */; };
+		AF8ECE462924FF95007E0C5B /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE452924FF95007E0C5B /* OnboardingViewController.swift */; };
+		AF8ECE492924FFF6007E0C5B /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE482924FFF6007E0C5B /* OnboardingCollectionViewCell.swift */; };
+		AF8ECE4C29250C57007E0C5B /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE4B29250C57007E0C5B /* NetworkRequest.swift */; };
+		AF8ECE4E2925129D007E0C5B /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE4D2925129D007E0C5B /* WeatherModel.swift */; };
+		AF8ECE50292515AF007E0C5B /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE4F292515AF007E0C5B /* NetworkDataFetch.swift */; };
+		AF8ECE52292515DC007E0C5B /* NetworkImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8ECE51292515DC007E0C5B /* NetworkImageRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +93,17 @@
 		AF8ECE2F291FA0DE007E0C5B /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		AF8ECE31291FF63F007E0C5B /* OkCancelAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkCancelAlert.swift; sourceTree = "<group>"; };
 		AF8ECE33292110FC007E0C5B /* Int + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extensions.swift"; sourceTree = "<group>"; };
+		AF8ECE362923635F007E0C5B /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF8ECE3D292393DC007E0C5B /* SettingProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProfileViewController.swift; sourceTree = "<group>"; };
+		AF8ECE3F29239DAF007E0C5B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		AF8ECE412923B202007E0C5B /* GallaryOrPhotoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaryOrPhotoAlert.swift; sourceTree = "<group>"; };
+		AF8ECE432923CD97007E0C5B /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		AF8ECE452924FF95007E0C5B /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		AF8ECE482924FFF6007E0C5B /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF8ECE4B29250C57007E0C5B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		AF8ECE4D2925129D007E0C5B /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		AF8ECE4F292515AF007E0C5B /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
+		AF8ECE51292515DC007E0C5B /* NetworkImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImageRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +142,7 @@
 				AF495DD529157B2400510BF4 /* Models */,
 				AF495DD629157B4000510BF4 /* Views */,
 				AF495DD329157AF300510BF4 /* Controllers */,
+				AF8ECE4A29250C3F007E0C5B /* Network */,
 				AF63ACF9291A86DA0087718A /* Services */,
 				AF495DD829157D8400510BF4 /* Extension */,
 				AF495DD429157B0900510BF4 /* Resoursec */,
@@ -132,6 +155,7 @@
 			children = (
 				AF495DBE291579C200510BF4 /* AppDelegate.swift */,
 				AF495DC0291579C200510BF4 /* SceneDelegate.swift */,
+				AF8ECE432923CD97007E0C5B /* Notifications.swift */,
 			);
 			path = Aplication;
 			sourceTree = "<group>";
@@ -139,6 +163,7 @@
 		AF495DD329157AF300510BF4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AF8ECE452924FF95007E0C5B /* OnboardingViewController.swift */,
 				AF495DF92918131000510BF4 /* MainTabBarController.swift */,
 				AF495DC2291579C200510BF4 /* MainViewController.swift */,
 				AF495DF12917C38200510BF4 /* StatisticsViewController.swift */,
@@ -146,6 +171,7 @@
 				AF670C18291B8E76007079B0 /* StartWorkoutViewController.swift */,
 				AF670C1F291BA5DA007079B0 /* TimerWorkoutViewController.swift */,
 				AF670C27291CBE2A007079B0 /* ProfileViewController.swift */,
+				AF8ECE3D292393DC007E0C5B /* SettingProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -167,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				AF63ACF7291A85CE0087718A /* WorkoutModel.swift */,
+				AF8ECE3F29239DAF007E0C5B /* UserModel.swift */,
+				AF8ECE4D2925129D007E0C5B /* WeatherModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,11 +202,13 @@
 		AF495DD629157B4000510BF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AF8ECE472924FFDA007E0C5B /* OnboardingVC */,
 				AF495DD729157B5500510BF4 /* MainVC */,
 				AF495DF52917C9B200510BF4 /* StatisticsVC */,
 				AF495DFD2919151E00510BF4 /* NewWorkoutVC */,
 				AF670C1C291BA215007079B0 /* StartWorkoutVC */,
 				AF670C21291BA944007079B0 /* TimerWorkoutVC */,
+				AF8ECE352923632C007E0C5B /* ProfileVC */,
 				AF670C24291BDD77007079B0 /* Alerts */,
 			);
 			path = Views;
@@ -287,8 +317,35 @@
 				AF670C25291BDD9C007079B0 /* SimpleAlert.swift */,
 				AF8ECE2F291FA0DE007E0C5B /* CustomAlert.swift */,
 				AF8ECE31291FF63F007E0C5B /* OkCancelAlert.swift */,
+				AF8ECE412923B202007E0C5B /* GallaryOrPhotoAlert.swift */,
 			);
 			path = Alerts;
+			sourceTree = "<group>";
+		};
+		AF8ECE352923632C007E0C5B /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				AF8ECE362923635F007E0C5B /* ProfileCollectionViewCell.swift */,
+			);
+			path = ProfileVC;
+			sourceTree = "<group>";
+		};
+		AF8ECE472924FFDA007E0C5B /* OnboardingVC */ = {
+			isa = PBXGroup;
+			children = (
+				AF8ECE482924FFF6007E0C5B /* OnboardingCollectionViewCell.swift */,
+			);
+			path = OnboardingVC;
+			sourceTree = "<group>";
+		};
+		AF8ECE4A29250C3F007E0C5B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AF8ECE4B29250C57007E0C5B /* NetworkRequest.swift */,
+				AF8ECE4F292515AF007E0C5B /* NetworkDataFetch.swift */,
+				AF8ECE51292515DC007E0C5B /* NetworkImageRequest.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,29 +427,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8ECE372923635F007E0C5B /* ProfileCollectionViewCell.swift in Sources */,
 				AF495DE829165FB000510BF4 /* UIFont + Extension.swift in Sources */,
 				AF8ECE32291FF63F007E0C5B /* OkCancelAlert.swift in Sources */,
 				AF495DDD29157E2400510BF4 /* CalendarView.swift in Sources */,
 				AF670C26291BDD9C007079B0 /* SimpleAlert.swift in Sources */,
 				AF495DFA2918131000510BF4 /* MainTabBarController.swift in Sources */,
 				AF495DC3291579C200510BF4 /* MainViewController.swift in Sources */,
+				AF8ECE462924FF95007E0C5B /* OnboardingViewController.swift in Sources */,
 				AF495DF22917C38200510BF4 /* StatisticsViewController.swift in Sources */,
 				AF670C28291CBE2A007079B0 /* ProfileViewController.swift in Sources */,
+				AF8ECE4C29250C57007E0C5B /* NetworkRequest.swift in Sources */,
 				AF495DF82917CA0500510BF4 /* StatisticsTableViewCell.swift in Sources */,
+				AF8ECE4029239DAF007E0C5B /* UserModel.swift in Sources */,
 				AF495DEE29176F5600510BF4 /* WorkoutTableViewCell.swift in Sources */,
 				AF63ACF8291A85CE0087718A /* WorkoutModel.swift in Sources */,
 				AF495DBF291579C200510BF4 /* AppDelegate.swift in Sources */,
 				AF495DDF29157E5100510BF4 /* WeatherView.swift in Sources */,
+				AF8ECE492924FFF6007E0C5B /* OnboardingCollectionViewCell.swift in Sources */,
+				AF8ECE442923CD97007E0C5B /* Notifications.swift in Sources */,
+				AF8ECE422923B202007E0C5B /* GallaryOrPhotoAlert.swift in Sources */,
 				AF495DE629165E3A00510BF4 /* UIView + Extension.swift in Sources */,
 				AF495DEC2916921E00510BF4 /* CalenderCollectionViewCell.swift in Sources */,
 				AF670C20291BA5DA007079B0 /* TimerWorkoutViewController.swift in Sources */,
 				AF495DDB29157DC000510BF4 /*  UIColor + Extension.swift in Sources */,
+				AF8ECE52292515DC007E0C5B /* NetworkImageRequest.swift in Sources */,
 				AF495DF42917C52C00510BF4 /* UILabel + Extension.swift in Sources */,
 				AF495DFC2918EFE000510BF4 /* NewWorkoutViewController.swift in Sources */,
 				AF495DF02917741800510BF4 /* UIStackView + Extenson.swift in Sources */,
 				AF670C19291B8E76007079B0 /* StartWorkoutViewController.swift in Sources */,
 				AF670C23291BA96A007079B0 /* TimerWorkoutViewCell.swift in Sources */,
+				AF8ECE3E292393DC007E0C5B /* SettingProfileViewController.swift in Sources */,
 				AF670C1E291BA3BF007079B0 /* StartWorkoutViewCell.swift in Sources */,
+				AF8ECE4E2925129D007E0C5B /* WeatherModel.swift in Sources */,
 				AF495DC1291579C200510BF4 /* SceneDelegate.swift in Sources */,
 				AF63ACFB291A86F60087718A /* RealmManager.swift in Sources */,
 				AF495E012919160800510BF4 /* DateAndRepeatView.swift in Sources */,
@@ -400,6 +467,7 @@
 				AF8ECE34292110FC007E0C5B /* Int + Extensions.swift in Sources */,
 				AF63ACFD291AA3060087718A /* Date + Extension.swift in Sources */,
 				AF8ECE30291FA0DE007E0C5B /* CustomAlert.swift in Sources */,
+				AF8ECE50292515AF007E0C5B /* NetworkDataFetch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

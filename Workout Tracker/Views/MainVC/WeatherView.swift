@@ -11,7 +11,7 @@ class WeatherView: UIView {
 
     private let weatherLabel: UILabel = {
         let label = UILabel()
-        label.text = "Солнечно"
+        label.text = ""
         label.textColor = .specialGray
         label.font = .robotoMedium18()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +20,7 @@ class WeatherView: UIView {
 
     private let descriptionOfTheWeather: UILabel = {
         let label = UILabel()
-        label.text = "Хорошая погода, чтобы позаниматься на улице"
+        label.text = ""
         label.textColor = .specialGray
         label.font = .robotoMedium14()
         label.adjustsFontSizeToFitWidth = true
@@ -30,7 +30,7 @@ class WeatherView: UIView {
         return label
     }()
 
-    private let weatherSun: UIImageView = {
+    private let weatherImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "weatherSun")
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,47 @@ class WeatherView: UIView {
 
         addSubview(weatherLabel)
         addSubview(descriptionOfTheWeather)
-        addSubview(weatherSun)
+        addSubview(weatherImage)
+    }
+
+    private func updateLabel(model: WeatherModel) {
+        weatherLabel.text = model.weather[0].myDescription + " \(model.main.temperatureCelsius)°C"
+
+        switch model.weather[0].weatherDescription {
+        case "clear sky":
+            descriptionOfTheWeather.text = "Замечательная погода, чтобы пробежаться за пивом"
+        case "few clouds":
+            descriptionOfTheWeather.text = "В принципе можешь потренироваться ну или за пивом сходить"
+        case "scattered clouds":
+            descriptionOfTheWeather.text = "Если тебя не смущают облака можно прогуляться без тренировки"
+        case "broken clouds":
+            descriptionOfTheWeather.text = "Темные тучи мордора, лучше занимайся дома"
+        case "shower rain":
+            descriptionOfTheWeather.text = "Самый противный дождь из всех дождей"
+        case "rain":
+            descriptionOfTheWeather.text = "Дождь из мужиков алилуяяяя"
+        case "thunderstorm":
+            descriptionOfTheWeather.text = "Гром гремит земля тресется это бывшая жрать несется"
+        case "snow":
+            descriptionOfTheWeather.text = "На улице падает сверху кокаин, но это обман"
+        case "mist":
+            descriptionOfTheWeather.text = "Смотрел сериал мгла? Лучше сиди дома..."
+        default :
+            descriptionOfTheWeather.text = "No data"
+        }
+    }
+
+    private func updateImage(data: Data) {
+        guard let image = UIImage(data: data) else { return }
+        weatherImage.image = image
+    }
+
+    public func setWeather(model: WeatherModel) {
+        updateLabel(model: model)
+    }
+
+    public func setImage(data: Data) {
+        updateImage(data: data)
     }
 }
 
@@ -63,7 +103,7 @@ extension WeatherView {
     private func setConstraints() {
 
         NSLayoutConstraint.activate([
-            weatherLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            weatherLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             weatherLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             weatherLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         ])
@@ -71,14 +111,15 @@ extension WeatherView {
         NSLayoutConstraint.activate([
             descriptionOfTheWeather.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
             descriptionOfTheWeather.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            descriptionOfTheWeather.trailingAnchor.constraint(equalTo: weatherSun.leadingAnchor, constant: -10)
+            descriptionOfTheWeather.trailingAnchor.constraint(equalTo: weatherImage.leadingAnchor, constant: -10),
+            descriptionOfTheWeather.topAnchor.constraint(equalTo: weatherLabel.bottomAnchor, constant: 0)
         ])
 
         NSLayoutConstraint.activate([
-            weatherSun.centerYAnchor.constraint(equalTo: centerYAnchor),
-            weatherSun.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            weatherSun.heightAnchor.constraint(equalToConstant: 62),
-            weatherSun.widthAnchor.constraint(equalToConstant: 62)
+            weatherImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            weatherImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            weatherImage.heightAnchor.constraint(equalToConstant: 62),
+            weatherImage.widthAnchor.constraint(equalToConstant: 62)
         ])
     }
 }
