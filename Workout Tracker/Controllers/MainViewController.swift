@@ -19,12 +19,13 @@ class MainViewController: UIViewController {
         let imageView = UIImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.7607843137, green: 0.7607843137, blue: 0.7607843137, alpha: 1)
         imageView.layer.borderWidth = 5
+        imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private let userNameLabel = UILabel(text: "Maxim Bogdanov",
+    private let userNameLabel = UILabel(text: "Your name",
                                         font: .robotoBold24(),
                                         textColor: .specialGray)
 
@@ -87,6 +88,7 @@ class MainViewController: UIViewController {
     private let localRealm = try! Realm()
     //Будем получать массив наших тренировок
     private var workoutArray: Results<WorkoutModel>!
+    private var userArray: Results<UserModel>!
 
     //MARK: - дидлоад
     override func viewDidLayoutSubviews() {
@@ -100,14 +102,23 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         getWorkouts(date: Date())
         tableView.reloadData()
+        setupUserParameters()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showOnboarding()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        userArray = localRealm.objects(UserModel.self)
+
         setupViews()
         setConstraints()
         setDelegates()
+        getWeather()
     }
 
     //Добавление на главный экран(вью)
@@ -142,6 +153,24 @@ class MainViewController: UIViewController {
         calendarView.cellCollectionViewDelegate = self
     }
 
+    private func getWeather() {
+        NetworkDataFetch.shared.fetchWether { [weak self] result, error in
+            guard let self = self else { return }
+            if let model = result {
+                self.weatherView.setWeather(model: model)
+                NetworkImageRequest.shared.requestData(id: model.weather[0].icon) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let data):
+                        self.weatherView.setImage(data: data)
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
+
     //Получаем тренировки из базы данных
     private func getWorkouts(date: Date) {
         let weekday = date.getWeekdayNumber()
@@ -166,6 +195,27 @@ class MainViewController: UIViewController {
         } else {
             noWorkoutImageView.isHidden = true
             tableView.isHidden = false
+        }
+    }
+
+    private func setupUserParameters() {
+
+        if userArray.count != 0 {
+            userNameLabel.text = userArray[0].userFirstName + " " + userArray[0].userSecondName
+
+            guard let data = userArray[0].userImage else { return }
+            guard let image = UIImage(data: data) else { return }
+            userPhotoImageView.image = image
+        }
+    }
+
+    private func showOnboarding() {
+        let userDefaults = UserDefaults.standard
+        let onBoardingWasViewed = userDefaults.bool(forKey: "OnBoardingWasViewed")
+        if onBoardingWasViewed == false {
+            let onboardingViewController = OnboardingViewController()
+            onboardingViewController.modalPresentationStyle = .fullScreen
+            present(onboardingViewController, animated: false)
         }
     }
 }

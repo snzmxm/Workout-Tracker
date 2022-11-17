@@ -143,6 +143,7 @@ class NewWorkoutViewController: UIViewController {
             workoutModel.workoutSets != 0 &&
             (workoutModel.workoutReps != 0 || workoutModel.workoutTimer != 0) {
             RealmManager.shared.saveWorkoutModel(model: workoutModel)
+            createNotifications()
             workoutModel = WorkoutModel()
             refreshObjects()
             alertOk(tittle: "SUCCESS", message: nil)
@@ -156,6 +157,14 @@ class NewWorkoutViewController: UIViewController {
         dateAndRepeatStackView.refreshDatePickerAndSwitch()
         repsOrTimerStavkView.refreshLabelsAndSliders()
         nameTextField.text = ""
+    }
+
+    private func createNotifications() {
+        let notifications = Notifications()
+        let stringDate = workoutModel.workoutDate.ddMMyyyyFromDate()
+        //тренировки, которые были созданы сегодня были с индентификатором "название тренировки + дата"
+        notifications.scheduleDateNotification(date: workoutModel.workoutDate, id: "workout" + stringDate)
+
     }
 }
 //MARK: - UITextViewDelegate
