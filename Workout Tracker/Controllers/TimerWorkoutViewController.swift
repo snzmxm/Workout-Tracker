@@ -9,7 +9,8 @@ import UIKit
 
 class TimerWorkoutViewController: UIViewController {
 
-    //MARK: - создание
+    //MARK: - Creating Elements
+
     private let startWorkoutLabel = UILabel(text: "START WORKOUT", font: .robotoMedium24(), textColor: .specialGray)
 
     private lazy var closeButton: UIButton = {
@@ -19,11 +20,6 @@ class TimerWorkoutViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-    @objc private func closeButtonTapped() {
-        dismiss(animated: true)
-        timer.invalidate()
-    }
 
     private let timerLabel: UILabel = {
         let label = UILabel()
@@ -62,19 +58,9 @@ class TimerWorkoutViewController: UIViewController {
         return button
     }()
 
-    @objc private func finishButtonTapped() {
-        if numberOfSet == workoutModel.workoutSets {
-            dismiss(animated: true)
-            RealmManager.shared.updateStatusWorkoutModel(model: workoutModel)
-        } else {
-            alertOkCancel(title: "WARNING",
-                          message: "You haven't finished your workout") {
-                self.dismiss(animated: true)
-            }
-        }
-    }
-
     private let timerWorkoutParametersView = TimerWorkoutViewCell()
+
+    //MARK: - Life Cycle
 
     override func viewDidLayoutSubviews() {
         closeButton.layer.cornerRadius = closeButton.frame.height / 2
@@ -82,7 +68,6 @@ class TimerWorkoutViewController: UIViewController {
         animationCircular()
     }
 
-    //MARK: - Добавление на вью
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -93,7 +78,8 @@ class TimerWorkoutViewController: UIViewController {
         setWorkoutParameters()
     }
 
-    //Добавление на главный экран(вью)
+    //MARK: - Hierarchy View
+
     private func setupViews() {
         view.backgroundColor = .specialBackground
 
@@ -107,6 +93,24 @@ class TimerWorkoutViewController: UIViewController {
     }
 
     //MARK: - Medots
+
+    @objc private func closeButtonTapped() {
+        dismiss(animated: true)
+        timer.invalidate()
+    }
+
+    @objc private func finishButtonTapped() {
+        if numberOfSet == workoutModel.workoutSets {
+            dismiss(animated: true)
+            RealmManager.shared.updateStatusWorkoutModel(model: workoutModel)
+        } else {
+            alertOkCancel(title: "WARNING",
+                          message: "You haven't finished your workout") {
+                self.dismiss(animated: true)
+            }
+        }
+    }
+
     private func addImage(width named: String) -> UIImageView {
         let imageView = UIImageView()
         imageView.image = UIImage(named: named)
@@ -157,6 +161,7 @@ class TimerWorkoutViewController: UIViewController {
         let (min, sec) = durationTimer.convertSeconds()
         timerLabel.text = "\(min):\(sec.setZeroForSecond())"
     }
+
     private func setWorkoutParameters() {
         timerWorkoutParametersView.nameWorkoutlabel.text = workoutModel.workoutName
         timerWorkoutParametersView.numberSetsLabel.text = "\(numberOfSet)/\(workoutModel.workoutSets)"
@@ -168,7 +173,9 @@ class TimerWorkoutViewController: UIViewController {
         durationTimer = workoutModel.workoutTimer
     }
 }
+
 //MARK: - Animation timer
+
 extension TimerWorkoutViewController {
     private func animationCircular() {
 
@@ -201,6 +208,7 @@ extension TimerWorkoutViewController {
         shapeLayer.add(basicAnimation, forKey: "basicAnimation")
     }
 }
+
 //MARK: - NextSetTimerProtocol
 
 extension TimerWorkoutViewController: NextSetTimerProtocol {
@@ -234,6 +242,7 @@ extension TimerWorkoutViewController: NextSetTimerProtocol {
 }
 
 //MARK: - SetConstrains
+
 extension TimerWorkoutViewController {
 
     private func setConstraints() {
@@ -269,13 +278,6 @@ extension TimerWorkoutViewController {
             detailsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
 
-        //        NSLayoutConstraint.activate([
-        //            detailsStack.topAnchor.constraint(equalTo: detailsLabel.bottomAnchor, constant: 0),
-        //            detailsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        //            detailsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-        //            detailsStack.heightAnchor.constraint(equalToConstant: 238)
-        //        ])
-
         NSLayoutConstraint.activate([
             timerWorkoutParametersView.topAnchor.constraint(equalTo: detailsLabel.bottomAnchor, constant: 5),
             timerWorkoutParametersView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -289,7 +291,6 @@ extension TimerWorkoutViewController {
             finishButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             finishButton.heightAnchor.constraint(equalToConstant: 55)
         ])
-
     }
 }
 

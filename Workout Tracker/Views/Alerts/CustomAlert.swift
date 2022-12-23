@@ -94,9 +94,9 @@ class CustomAlert {
         setTextField.borderStyle = .none
         setTextField.font = .robotoBold20()
         setTextField.leftView = UIView(frame: CGRect(x: 0,
-                                                  y: 0,
-                                                  width: 15,
-                                                  height: setsLabel.frame.height))
+                                                     y: 0,
+                                                     width: 15,
+                                                     height: setsLabel.frame.height))
         setTextField.leftViewMode = .always
         setTextField.clearButtonMode = .always
         setTextField.returnKeyType = .done
@@ -123,9 +123,9 @@ class CustomAlert {
         repsTextField.borderStyle = .none
         repsTextField.font = .robotoBold20()
         repsTextField.leftView = UIView(frame: CGRect(x: 0,
-                                                  y: 0,
-                                                  width: 15,
-                                                  height: setsLabel.frame.height))
+                                                      y: 0,
+                                                      width: 15,
+                                                      height: setsLabel.frame.height))
         repsTextField.leftViewMode = .always
         repsTextField.clearButtonMode = .always
         repsTextField.returnKeyType = .done

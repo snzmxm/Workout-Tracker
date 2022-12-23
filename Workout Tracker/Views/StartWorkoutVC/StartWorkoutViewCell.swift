@@ -14,41 +14,31 @@ protocol NextSetProtocol: AnyObject {
 
 class StartWorkoutViewCell: UIView {
 
-    //MARK: - Cозадние
+    //MARK: - Creating Elements
 
-     let nameWorkoutlabel = UILabel(text: "Name",
-                                           font: .robotoMedium24(),
-                                           textColor: .specialGray)
+    let nameWorkoutlabel = UILabel(text: "Name",
+                                   font: .robotoMedium24(),
+                                   textColor: .specialGray)
     //SETS
     private var setsStackView = UIStackView()
     private let setsLabel = UILabel(text: "Sets",
                                     font: .robotoMedium18(),
                                     textColor: .specialGray)
 
-     let numberSetsLabel = UILabel(text: "1/4",
-                                          font: .robotoMedium24(),
-                                          textColor: .specialGray)
-    private let setsLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .specialLine
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    let numberSetsLabel = UILabel(text: "1/4",
+                                  font: .robotoMedium24(),
+                                  textColor: .specialGray)
+    private let setsLineView = UIView(backgroundColor: .specialLine)
     //REPS
     private var repsStackView = UIStackView()
-     let repsLabel = UILabel(text: "Reps",
-                                    font: .robotoMedium18(),
-                                    textColor: .specialGray)
+    let repsLabel = UILabel(text: "Reps",
+                            font: .robotoMedium18(),
+                            textColor: .specialGray)
 
-     let numberRepsLabel = UILabel(text: "20",
-                                          font: .robotoMedium24(),
-                                          textColor: .specialGray)
-    private let repsLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .specialLine
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    let numberRepsLabel = UILabel(text: "20",
+                                  font: .robotoMedium24(),
+                                  textColor: .specialGray)
+    private let repsLineView = UIView(backgroundColor: .specialLine)
 
     weak var cellNextSetDelegate: NextSetProtocol?
 
@@ -64,10 +54,6 @@ class StartWorkoutViewCell: UIView {
         return button
     }()
 
-    @objc private func editingButtonTapped() {
-        cellNextSetDelegate?.editingTapped()
-    }
-
     //add button next set
     lazy var nextSetButton: UIButton = {
         let button = UIButton(type: .system)
@@ -81,11 +67,9 @@ class StartWorkoutViewCell: UIView {
         button.addTarget(self, action: #selector(nextSetButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    //MARK: - Life Cycle
 
-    @objc private func nextSetButtonTapped() {
-        cellNextSetDelegate?.nextSetTapped()
-    }
-    //MARK: - Добавление на вью
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -96,6 +80,9 @@ class StartWorkoutViewCell: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    //MARK: - Hierarchy View
+
     private func setupView() {
         backgroundColor = .specialBrown
         layer.cornerRadius = 10
@@ -119,8 +106,20 @@ class StartWorkoutViewCell: UIView {
         addSubview(editingButton)
         addSubview(nextSetButton)
     }
+
+    //MARK: - Methods
+
+    @objc private func editingButtonTapped() {
+        cellNextSetDelegate?.editingTapped()
+    }
+
+    @objc private func nextSetButtonTapped() {
+        cellNextSetDelegate?.nextSetTapped()
+    }
 }
+
 //MARK: - SetConstrains
+
 extension StartWorkoutViewCell {
 
     private func setConstraints() {

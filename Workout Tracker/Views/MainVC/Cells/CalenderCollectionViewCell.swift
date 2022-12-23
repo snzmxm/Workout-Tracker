@@ -9,15 +9,17 @@ import UIKit
 
 class CalenderCollectionViewCell: UICollectionViewCell {
 
+    //MARK: - Creating Elements
+    
     private let dayOfWeekLabel = UILabel(text: "We",
                                          font: .robotoBold16(),
                                          textColor: .white,
                                          textAlignment: .center)
 
     private let numberOfDayLabel = UILabel(text: "05",
-                                         font: .robotoBold20(),
-                                         textColor: .white,
-                                         textAlignment: .center)
+                                           font: .robotoBold20(),
+                                           textColor: .white,
+                                           textAlignment: .center)
 
     override var isSelected: Bool {
         didSet {
@@ -34,6 +36,8 @@ class CalenderCollectionViewCell: UICollectionViewCell {
         }
     }
 
+    //MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -45,10 +49,15 @@ class CalenderCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //MARK: - Hierarchy View
+
     private func setupViews() {
         addSubview(dayOfWeekLabel)
         addSubview(numberOfDayLabel)
     }
+
+    //MARK: - Methods
+    
     //Формирование ячейки
     private func cellConfigure(numberOfDay: String, dayOfWeek: String) {
         numberOfDayLabel.text = numberOfDay
@@ -59,7 +68,9 @@ class CalenderCollectionViewCell: UICollectionViewCell {
         cellConfigure(numberOfDay: numberOfDay, dayOfWeek: dayOfWeek)
     }
 }
+
 //MARK: - setConstrains
+
 extension CalenderCollectionViewCell {
 
     private func setConstraints() {

@@ -9,6 +9,8 @@ import UIKit
 
 class CalendarView: UIView {
 
+    //MARK: - Creating Elements
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 3
@@ -23,6 +25,8 @@ class CalendarView: UIView {
 
     weak var cellCollectionViewDelegate: SelectCollectionViewItemProtocol?
 
+    //MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -34,6 +38,8 @@ class CalendarView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    //MARK: - Hierarchy View
 
     private func setupViews() {
         backgroundColor = .specialGreen
@@ -52,6 +58,7 @@ class CalendarView: UIView {
 }
 
 //MARK: - UICollectionViewDataSource
+
 extension CalendarView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -62,8 +69,8 @@ extension CalendarView: UICollectionViewDataSource {
 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCallendarCell, for: indexPath) as?
                 CalenderCollectionViewCell else {
-           return UICollectionViewCell()
-       }
+            return UICollectionViewCell()
+        }
         let dateTimeZone = Date().localDate()
         let weekArray = dateTimeZone.getWeekArray()
         cell.dateForCell(numberOfDay: weekArray[1][indexPath.item], dayOfWeek: weekArray[0][indexPath.item])
@@ -76,7 +83,9 @@ extension CalendarView: UICollectionViewDataSource {
         return cell
     }
 }
+
 //MARK: - UICollectionViewDelegate
+
 extension CalendarView: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -99,7 +108,9 @@ extension CalendarView: UICollectionViewDelegate {
         }
     }
 }
+
 //MARK: - UICollectionViewDelegateFlowLayout
+
 extension CalendarView: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -107,7 +118,9 @@ extension CalendarView: UICollectionViewDelegateFlowLayout {
                height: collectionView.frame.height)
     }
 }
+
 //MARK: - setConstrains
+
 extension CalendarView {
 
     private func setConstraints() {

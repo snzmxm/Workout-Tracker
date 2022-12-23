@@ -9,6 +9,8 @@ import UIKit
 
 class WeatherView: UIView {
 
+    //MARK: - Creating Elements
+    
     private let weatherLabel: UILabel = {
         let label = UILabel()
         label.text = ""
@@ -37,6 +39,8 @@ class WeatherView: UIView {
         return imageView
     }()
 
+    //MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -48,6 +52,8 @@ class WeatherView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //MARK: - Hierarchy View
+    
     private func setupViews() {
         backgroundColor = #colorLiteral(red: 0.9764705882, green: 0.9764705882, blue: 0.9764705882, alpha: 1)
         layer.cornerRadius = 10
@@ -57,6 +63,8 @@ class WeatherView: UIView {
         addSubview(descriptionOfTheWeather)
         addSubview(weatherImage)
     }
+
+    //MARK: - Methods
 
     private func updateLabel(model: WeatherModel) {
         weatherLabel.text = model.weather[0].myDescription + " \(model.main.temperatureCelsius)°C"
@@ -98,6 +106,8 @@ class WeatherView: UIView {
         updateImage(data: data)
     }
 }
+
+//MARK: - setConstraints
 
 extension WeatherView {
     private func setConstraints() {

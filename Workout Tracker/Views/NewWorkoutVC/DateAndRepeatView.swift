@@ -9,6 +9,8 @@ import UIKit
 
 class DateAndRepeatView: UIView {
 
+    //MARK: - Creating Elements
+
     private let dateLabel = UILabel(text: "Date",
                                     font: .robotoMedium18(),
                                     textColor: .specialGray)
@@ -36,6 +38,8 @@ class DateAndRepeatView: UIView {
     private var dateStackView = UIStackView()
     private var repeatStackView = UIStackView()
 
+    //MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -46,6 +50,8 @@ class DateAndRepeatView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    //MARK: - Hierarchy View
 
     private func setupViews() {
         backgroundColor = .specialBrown
@@ -61,6 +67,8 @@ class DateAndRepeatView: UIView {
         addSubview(dateStackView)
         addSubview(repeatStackView)
     }
+
+    //MARK: - Methods
 
     private func getDateAndRepeat() -> (Date, Bool) {
         (datePicker.date, repeatSwitch.isOn)
@@ -79,6 +87,8 @@ class DateAndRepeatView: UIView {
         refreshWorkoutObjects()
     }
 }
+
+//MARK: - setConstraints
 
 extension DateAndRepeatView {
     private func setConstraints() {

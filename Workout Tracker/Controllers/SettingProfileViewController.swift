@@ -9,12 +9,14 @@ import UIKit
 import RealmSwift
 
 class SettingProfileViewController: UIViewController {
-
+    
+    //MARK: - Creating Elements
+    
     private let editingProfileLabel = UILabel(text: "EDITING PROFILE",
                                               font: .robotoMedium24(),
                                               textColor: .specialGray,
                                               textAlignment: .center)
-
+    
     private lazy var  closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setBackgroundImage(UIImage(named: "closeButton"), for: .normal)
@@ -22,7 +24,7 @@ class SettingProfileViewController: UIViewController {
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         return button
     }()
-
+    
     private let addPhotoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.7607843137, green: 0.7607843137, blue: 0.7607843137, alpha: 1)
@@ -34,17 +36,11 @@ class SettingProfileViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
-    private let addPhotoView: UIView = {
-       let view = UIView()
-        view.backgroundColor = .specialGreen
-        view.layer.cornerRadius = 10
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
+    
+    private let addPhotoView = UIView(backgroundColor: .specialGreen, cornerRadius: 10)
+    
     private let firstNameLabel = UILabel(text: "   First name")
-
+    
     private let firstNameTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .specialBrown
@@ -59,9 +55,9 @@ class SettingProfileViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-
+    
     private let secondNameLabel = UILabel(text: "   Second name")
-
+    
     private let secondNameTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .specialBrown
@@ -76,9 +72,9 @@ class SettingProfileViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-
+    
     private let heightLabel = UILabel(text: "   Height")
-
+    
     private let heightTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .specialBrown
@@ -94,9 +90,9 @@ class SettingProfileViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-
+    
     private let weightLabel = UILabel(text: "   Weight")
-
+    
     private let weightTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .specialBrown
@@ -112,9 +108,9 @@ class SettingProfileViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-
+    
     private let targetLabel = UILabel(text: "   Target")
-
+    
     private let targetTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .specialBrown
@@ -130,7 +126,7 @@ class SettingProfileViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-
+    
     private lazy var  saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .specialGreen
@@ -142,81 +138,87 @@ class SettingProfileViewController: UIViewController {
         button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         return button
     }()
-
+    
     private var firstNameStackView = UIStackView()
     private var secondNameStackView = UIStackView()
     private var heightStackView = UIStackView()
     private var weightStackView = UIStackView()
     private var targetStackView = UIStackView()
     private var generalStackView = UIStackView()
-
+    
     private let localRealm = try! Realm()
     private var userArray: Results<UserModel>!
     private var userModel = UserModel()
-
+    
+    //MARK: - Life Cycle
+    
     override func viewDidLayoutSubviews() {
         addPhotoImageView.layer.cornerRadius = addPhotoImageView.frame.height / 2
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupViews()
         setConstraints()
         addTaps()
         //масив пользователей
         userArray = localRealm.objects(UserModel.self)
-
+        
         loadUserInfo()
     }
-
+    
+    //MARK: - Hierarchy View
+    
     private func setupViews() {
-
+        
         view.backgroundColor = .specialBackground
-
+        
         view.addSubview(editingProfileLabel)
         view.addSubview(closeButton)
         view.addSubview(addPhotoView)
         view.addSubview(addPhotoImageView)
-
+        
         firstNameStackView = UIStackView(arrangedSubviews: [firstNameLabel, firstNameTextField],
                                          axis: .vertical,
                                          spacing: 3)
-
+        
         secondNameStackView = UIStackView(arrangedSubviews: [secondNameLabel, secondNameTextField],
-                                         axis: .vertical,
-                                         spacing: 3)
-
+                                          axis: .vertical,
+                                          spacing: 3)
+        
         heightStackView = UIStackView(arrangedSubviews: [heightLabel, heightTextField],
-                                         axis: .vertical,
-                                         spacing: 3)
-
+                                      axis: .vertical,
+                                      spacing: 3)
+        
         weightStackView = UIStackView(arrangedSubviews: [weightLabel, weightTextField],
-                                         axis: .vertical,
-                                         spacing: 3)
-
+                                      axis: .vertical,
+                                      spacing: 3)
+        
         targetStackView = UIStackView(arrangedSubviews: [targetLabel, targetTextField],
-                                         axis: .vertical,
-                                         spacing: 3)
-
+                                      axis: .vertical,
+                                      spacing: 3)
+        
         generalStackView = UIStackView(arrangedSubviews: [firstNameStackView,
-                                                         secondNameStackView,
-                                                         heightStackView,
-                                                         weightStackView,
-                                                         targetStackView],
+                                                          secondNameStackView,
+                                                          heightStackView,
+                                                          weightStackView,
+                                                          targetStackView],
                                        axis: .vertical,
                                        spacing: 20)
         view.addSubview(generalStackView)
         view.addSubview(saveButton)
     }
-
+    
+    //MARK: - Methods
+    
     @objc private func closeButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
-
+    
     @objc private func saveButtonTapped() {
         setUserModel()
-
+        
         if userArray.count == 0 {
             RealmManager.shared.saveUserModel(model: userModel)
         } else {
@@ -224,22 +226,22 @@ class SettingProfileViewController: UIViewController {
         }
         userModel = UserModel()
     }
-
+    
     private func addTaps() {
         let tapImageView = UITapGestureRecognizer(target: self, action: #selector(setUserPhoto))
         addPhotoImageView.isUserInteractionEnabled = true
         addPhotoImageView.addGestureRecognizer(tapImageView)
     }
-
+    
     @objc private func setUserPhoto() {
         alertPhotoOrCamera { [weak self] source in
             guard let self = self else { return }
             self.chooseImagePicker(source: source)
         }
     }
-
+    
     private func setUserModel() {
-
+        
         guard let firstName = firstNameTextField.text,
               let secondName = secondNameTextField.text,
               let height = heightTextField.text,
@@ -247,19 +249,19 @@ class SettingProfileViewController: UIViewController {
               let target = targetTextField.text else {
             return
         }
-
+        
         guard let intHeight = Int(height),
               let intWeight = Int(weight),
               let intTarget = Int(target) else {
             return
         }
-
+        
         userModel.userFirstName = firstName
         userModel.userSecondName = secondName
         userModel.userHeight = intHeight
         userModel.userWeight = intWeight
         userModel.userTarget = intTarget
-
+        
         if addPhotoImageView.image == UIImage(named: "addPhoto") {
             userModel.userImage = nil
         } else {
@@ -276,7 +278,7 @@ class SettingProfileViewController: UIViewController {
             heightTextField.text = "\(userArray[0].userHeight)"
             weightTextField.text = "\(userArray[0].userWeight)"
             targetTextField.text = "\(userArray[0].userTarget)"
-
+            
             guard let data = userArray[0].userImage else { return }
             guard let image = UIImage(data: data) else { return }
             addPhotoImageView.image = image
@@ -284,9 +286,11 @@ class SettingProfileViewController: UIViewController {
         }
     }
 }
-//MARK: - UIImagePickerControllerDelegate
-extension SettingProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+//MARK: - UIImagePickerControllerDelegate
+
+extension SettingProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
         //открываем имеджпикер и делаем там настройку
         if UIImagePickerController.isSourceTypeAvailable(source) {
@@ -305,50 +309,51 @@ extension SettingProfileViewController: UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true)
     }
 }
+
 //MARK: - SetConstraints
 
 extension SettingProfileViewController {
-
+    
     private func setConstraints() {
-
+        
         NSLayoutConstraint.activate([
             editingProfileLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             editingProfileLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-
+        
         NSLayoutConstraint.activate([
             closeButton.centerYAnchor.constraint(equalTo: editingProfileLabel.centerYAnchor),
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             closeButton.heightAnchor.constraint(equalToConstant: 30),
             closeButton.widthAnchor.constraint(equalToConstant: 30)
         ])
-
+        
         NSLayoutConstraint.activate([
             addPhotoImageView.topAnchor.constraint(equalTo: editingProfileLabel.bottomAnchor, constant: 20),
             addPhotoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             addPhotoImageView.heightAnchor.constraint(equalToConstant: 100),
             addPhotoImageView.widthAnchor.constraint(equalToConstant: 100)
         ])
-
+        
         NSLayoutConstraint.activate([
             addPhotoView.topAnchor.constraint(equalTo: addPhotoImageView.topAnchor, constant: 50),
             addPhotoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             addPhotoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             addPhotoView.heightAnchor.constraint(equalToConstant: 70)
         ])
-
+        
         NSLayoutConstraint.activate([
             firstNameTextField.heightAnchor.constraint(equalToConstant: 40),
             secondNameTextField.heightAnchor.constraint(equalToConstant: 40),
             heightTextField.heightAnchor.constraint(equalToConstant: 40),
             weightTextField.heightAnchor.constraint(equalToConstant: 40),
             targetTextField.heightAnchor.constraint(equalToConstant: 40),
-
+            
             generalStackView.topAnchor.constraint(equalTo: addPhotoView.bottomAnchor, constant: 20),
             generalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             generalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
-
+        
         NSLayoutConstraint.activate([
             saveButton.topAnchor.constraint(equalTo: generalStackView.bottomAnchor, constant: 30),
             saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),

@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileCollectionViewCell: UICollectionViewCell {
 
+    //MARK: - Creating Elements
+
     private let nameLabel = UILabel(text: "PUSH UPS",
                                     font: .robotoBold24(),
                                     textColor: .white,
@@ -20,13 +22,15 @@ class ProfileCollectionViewCell: UICollectionViewCell {
                                       textAlignment: .center)
 
     private let workoutImageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.image = UIImage(named: "pushUps")?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+
+    //MARK: - Life Cycle
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,6 +43,8 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //MARK: - Hierarchy View
+
     private func setupViews() {
         layer.cornerRadius = 20
         backgroundColor = .specialDarkYellow
@@ -47,6 +53,8 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         addSubview(workoutImageView)
         addSubview(numberLabel)
     }
+
+    //MARK: - Methods
 
     func cellConfigure(model: ResultWorkout) {
         nameLabel.text = model.name
@@ -58,6 +66,8 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     }
 }
 
+//MARK: - setConstraints
+
 extension ProfileCollectionViewCell {
     private func setConstraints() {
 
@@ -65,7 +75,7 @@ extension ProfileCollectionViewCell {
             nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
-
+        
         NSLayoutConstraint.activate([
             workoutImageView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
             workoutImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),

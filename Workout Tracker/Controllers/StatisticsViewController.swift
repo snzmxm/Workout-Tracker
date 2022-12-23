@@ -16,7 +16,11 @@ struct DifferenceWorkout {
 
 class StatisticsViewController: UIViewController {
 
-    private let statisticsLabel = UILabel(text: "STATISTICS", font: .robotoMedium24(), textColor: .specialGray)
+    //MARK: - Creating Elements
+
+    private let statisticsLabel = UILabel(text: "STATISTICS",
+                                          font: .robotoMedium24(),
+                                          textColor: .specialGray)
 
     private let exercisesLabel = UILabel(text: "Exercises")
 
@@ -49,7 +53,7 @@ class StatisticsViewController: UIViewController {
     }()
 
     private let nameTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.backgroundColor = .specialBrown
         textField.borderStyle = .none
         textField.layer.cornerRadius = 10
@@ -76,6 +80,8 @@ class StatisticsViewController: UIViewController {
 
     private var isFiltred = false
 
+    //MARK: - Life Cycle
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -93,7 +99,8 @@ class StatisticsViewController: UIViewController {
         setDelegates()
     }
 
-    //Добавление на главный экран(вью)
+    //MARK: - Hierarchy View
+
     private func setupViews() {
         view.backgroundColor = .specialBackground
 
@@ -103,9 +110,12 @@ class StatisticsViewController: UIViewController {
         view.addSubview(exercisesLabel)
 
         view.addSubview(tableView)
-        tableView.register(StatisticsTableViewCell.self, forCellReuseIdentifier: idWorkoutTableVIewCell)
+        tableView.register(StatisticsTableViewCell.self,
+                           forCellReuseIdentifier: idWorkoutTableVIewCell)
     }
 
+    //MARK: - Methods
+    
     private func setDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -126,6 +136,7 @@ class StatisticsViewController: UIViewController {
         }
         tableView.reloadData()
     }
+
     //тут мы получаем все уникальные имена тренировок
     private func getWorkoutName() -> [String] {
         var nameArray = [String]()
@@ -139,6 +150,7 @@ class StatisticsViewController: UIViewController {
         }
         return nameArray
     }
+
     //из базы данных получаем те значения, которые сдвигают на неделю или месяц
     private func getDifferenceModel(dateStart: Date) {
 
@@ -149,7 +161,7 @@ class StatisticsViewController: UIViewController {
         for name in nameArray {
 
             let predicateDifference = NSPredicate(format: "workoutName = '\(name)' AND workoutDate BETWEEN %@",
-            [dateStart, dateEnd])
+                                                  [dateStart, dateEnd])
             workoutArray = localRealm.objects(WorkoutModel.self).filter(predicateDifference).sorted(byKeyPath: "workoutDate")
 
             guard let last = workoutArray.last?.workoutReps,
@@ -198,13 +210,14 @@ extension StatisticsViewController: UITableViewDataSource {
         return cell
     }
 }
-    //MARK: - UITableViewDelegate
 
-    extension StatisticsViewController: UITableViewDelegate {
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 55
-        }
+//MARK: - UITableViewDelegate
+
+extension StatisticsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
     }
+}
 
 //MARK: - UITextFieldDelegate
 
@@ -235,41 +248,42 @@ extension StatisticsViewController: UITextFieldDelegate {
         return true
     }
 }
-    //MARK: - SetConstrains
 
-    extension StatisticsViewController {
-        private func setConstraints() {
+//MARK: - SetConstrains
 
-            NSLayoutConstraint.activate([
-                statisticsLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-                statisticsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
+extension StatisticsViewController {
+    private func setConstraints() {
 
-            NSLayoutConstraint.activate([
-                segmentedControl.topAnchor.constraint(equalTo: statisticsLabel.bottomAnchor, constant: 10),
-                segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-            ])
+        NSLayoutConstraint.activate([
+            statisticsLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            statisticsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
 
-            NSLayoutConstraint.activate([
-                nameTextField.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
-                nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                nameTextField.heightAnchor.constraint(equalToConstant: 38)
-            ])
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: statisticsLabel.bottomAnchor, constant: 10),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
 
-            NSLayoutConstraint.activate([
-                exercisesLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10),
-                exercisesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                exercisesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-            ])
+        NSLayoutConstraint.activate([
+            nameTextField.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nameTextField.heightAnchor.constraint(equalToConstant: 38)
+        ])
 
-            NSLayoutConstraint.activate([
-                tableView.topAnchor.constraint(equalTo: exercisesLabel.bottomAnchor, constant: 0),
-                tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-                tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-            ])
-        }
+        NSLayoutConstraint.activate([
+            exercisesLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10),
+            exercisesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            exercisesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: exercisesLabel.bottomAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        ])
     }
+}
 

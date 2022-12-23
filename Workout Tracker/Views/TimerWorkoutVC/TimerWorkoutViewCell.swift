@@ -14,44 +14,39 @@ protocol NextSetTimerProtocol: AnyObject {
 
 class TimerWorkoutViewCell: UIView {
 
-    //MARK: - Cозадние
+    //MARK: - Creating Elements
 
-     let nameWorkoutlabel = UILabel(text: "Squats",
-                                           font: .robotoMedium24(),
-                                           textColor: .specialGray)
+    let nameWorkoutlabel = UILabel(text: "Squats",
+                                   font: .robotoMedium24(),
+                                   textColor: .specialGray)
     //SETS
     private var setsStackView = UIStackView()
+
     private let setsLabel = UILabel(text: "Sets",
                                     font: .robotoMedium18(),
                                     textColor: .specialGray)
 
-     let numberSetsLabel = UILabel(text: "1/4",
-                                          font: .robotoMedium24(),
-                                          textColor: .specialGray)
-    private let setsLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .specialLine
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    let numberSetsLabel = UILabel(text: "1/4",
+                                  font: .robotoMedium24(),
+                                  textColor: .specialGray)
+
+    private let setsLineView = UIView(backgroundColor: .specialLine)
+
     //time of sets
     private var timeOfSetStack = UIStackView()
-    private let timeOfSetLabel = UILabel(text: "Time of Set",
-                                    font: .robotoMedium18(),
-                                    textColor: .specialGray)
 
-     let numberOfTimerLabel = UILabel(text: "10",
-                                          font: .robotoMedium24(),
-                                          textColor: .specialGray)
-    private let timeOfSetLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .specialLine
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let timeOfSetLabel = UILabel(text: "Time of Set",
+                                         font: .robotoMedium18(),
+                                         textColor: .specialGray)
+
+    let numberOfTimerLabel = UILabel(text: "10",
+                                     font: .robotoMedium24(),
+                                     textColor: .specialGray)
+
+    private let timeOfSetLineView = UIView(backgroundColor: .specialLine)
 
     //Cоздаем кнопку редактировать
-     lazy var editingButton: UIButton = {
+    lazy var editingButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Editing", for: .normal)
         button.tintColor = .specialDarkGreen
@@ -61,10 +56,6 @@ class TimerWorkoutViewCell: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-    @objc private func editingButtonTapped() {
-        cellNextSetTimerDelegate?.editingTimerTapped()
-    }
 
     //add button next set
     lazy var nextSetButton: UIButton = {
@@ -82,10 +73,8 @@ class TimerWorkoutViewCell: UIView {
 
     weak var cellNextSetTimerDelegate: NextSetTimerProtocol?
 
-    @objc private func nextSetButtonTapped() {
-        cellNextSetTimerDelegate?.nextSetTimerTapped()
-    }
-    //MARK: - Добавление на вью
+    //MARK: - Life Cycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -96,6 +85,9 @@ class TimerWorkoutViewCell: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    //MARK: - Hierarchy View
+
     private func setupView() {
         backgroundColor = .specialBrown
         layer.cornerRadius = 10
@@ -111,16 +103,28 @@ class TimerWorkoutViewCell: UIView {
         addSubview(setsLineView)
 
         timeOfSetStack = UIStackView(arrangedSubviews: [timeOfSetLabel, numberOfTimerLabel],
-                                    axis: .horizontal,
-                                    spacing: 10)
+                                     axis: .horizontal,
+                                     spacing: 10)
         timeOfSetStack.distribution = .equalSpacing
         addSubview(timeOfSetStack)
         addSubview(timeOfSetLineView)
         addSubview(editingButton)
         addSubview(nextSetButton)
     }
+
+    //MARK: - Methods
+    
+    @objc private func editingButtonTapped() {
+        cellNextSetTimerDelegate?.editingTimerTapped()
+    }
+
+    @objc private func nextSetButtonTapped() {
+        cellNextSetTimerDelegate?.nextSetTimerTapped()
+    }
 }
+
 //MARK: - SetConstrains
+
 extension TimerWorkoutViewCell {
 
     private func setConstraints() {

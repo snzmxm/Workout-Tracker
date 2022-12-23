@@ -15,6 +15,8 @@ struct OnboardingStruct {
 
 class OnboardingViewController: UIViewController {
 
+    //MARK: - Creating Elements
+
     private lazy var  nextButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
@@ -28,7 +30,7 @@ class OnboardingViewController: UIViewController {
     }()
 
     private let pageControl: UIPageControl = {
-       let pageControl = UIPageControl()
+        let pageControl = UIPageControl()
         pageControl.numberOfPages = 3
         pageControl.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
         pageControl.isEnabled = false
@@ -54,6 +56,8 @@ class OnboardingViewController: UIViewController {
 
     private var collectionItem = 0
 
+    //MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,6 +65,8 @@ class OnboardingViewController: UIViewController {
         setConstraints()
         setDelegates()
     }
+
+    //MARK: - Hierarchy View
 
     private func setupViews() {
         view.backgroundColor = .specialGreen
@@ -71,14 +77,14 @@ class OnboardingViewController: UIViewController {
         collectionView.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: idOnboardingCell)
 
         guard let imageFirst = UIImage(named: "onboardingFirst"),
-        let imageSecond = UIImage(named: "onboardingSecond"),
-        let imageThird = UIImage(named: "onboardingThird") else {
+              let imageSecond = UIImage(named: "onboardingSecond"),
+              let imageThird = UIImage(named: "onboardingThird") else {
             return
         }
 
         let firstScreen = OnboardingStruct(topLabel: "Have a good health",
-                                          bottomLabel: "Being healthy is all, no health is nothing. So why do not we",
-                                          image: imageFirst)
+                                           bottomLabel: "Being healthy is all, no health is nothing. So why do not we",
+                                           image: imageFirst)
         let secondScreen = OnboardingStruct(topLabel: "Be stronger",
                                             bottomLabel: "Take 30 minutes of bodybuilding every day to get physically fit and healthy.",
                                             image: imageSecond)
@@ -87,6 +93,8 @@ class OnboardingViewController: UIViewController {
                                            image: imageThird)
         onboardingArray = [firstScreen, secondScreen, thirdScreen]
     }
+
+    //MARK: - Methods
 
     private func setDelegates() {
         collectionView.dataSource = self
@@ -117,6 +125,7 @@ class OnboardingViewController: UIViewController {
 }
 
 //MARK: - UICollectionViewDataSource
+
 extension OnboardingViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -138,6 +147,8 @@ extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
         CGSize(width: view.frame.width, height: collectionView.frame.height)
     }
 }
+
+//MARK: - setConstraints
 
 extension OnboardingViewController {
 

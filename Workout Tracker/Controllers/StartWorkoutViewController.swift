@@ -8,8 +8,12 @@
 import UIKit
 
 class StartWorkoutViewController: UIViewController {
-    
-    private let startWorkoutLabel = UILabel(text: "START WORKOUT", font: .robotoMedium24(), textColor: .specialGray)
+
+    //MARK: - Creating Elements
+
+    private let startWorkoutLabel = UILabel(text: "START WORKOUT",
+                                            font: .robotoMedium24(),
+                                            textColor: .specialGray)
 
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
@@ -44,19 +48,7 @@ class StartWorkoutViewController: UIViewController {
         return button
     }()
 
-    @objc private func finishButtonTapped() {
-        if numberOfSet == workoutModel.workoutSets {
-            dismiss(animated: true)
-            RealmManager.shared.updateStatusWorkoutModel(model: workoutModel)
-        } else {
-            alertOkCancel(title: "WARNING", message: "You haven't finished your workout") {
-                self.dismiss(animated: true)
-            }
-        }
-    }
-    @objc private func closeButtonTapped() {
-        dismiss(animated: true, completion: nil)
-    }
+    //MARK: - Life Cycle
 
     override func viewDidLayoutSubviews() {
         closeButton.layer.cornerRadius = closeButton.frame.height / 2
@@ -71,6 +63,8 @@ class StartWorkoutViewController: UIViewController {
         setWorkoutsParameters()
     }
 
+    //MARK: - Hierarchy View
+
     private func  setupViews() {
         view.backgroundColor = .specialBackground
 
@@ -80,7 +74,23 @@ class StartWorkoutViewController: UIViewController {
         view.addSubview(detailsLabel)
         view.addSubview(workoutParametersView)
         view.addSubview(finishButton)
+    }
 
+    //MARK: - Methods
+
+    @objc private func finishButtonTapped() {
+        if numberOfSet == workoutModel.workoutSets {
+            dismiss(animated: true)
+            RealmManager.shared.updateStatusWorkoutModel(model: workoutModel)
+        } else {
+            alertOkCancel(title: "WARNING", message: "You haven't finished your workout") {
+                self.dismiss(animated: true)
+            }
+        }
+    }
+
+    @objc private func closeButtonTapped() {
+        dismiss(animated: true, completion: nil)
     }
 
     private func setDelegates() {
@@ -100,7 +110,9 @@ class StartWorkoutViewController: UIViewController {
         workoutParametersView.numberRepsLabel.text = "\(workoutModel.workoutReps)"
     }
 }
+
 //MARK: - NextSetProtocol
+
 extension StartWorkoutViewController: NextSetProtocol {
 
     func editingTapped() {
@@ -127,7 +139,9 @@ extension StartWorkoutViewController: NextSetProtocol {
         }
     }
 }
+
 //MARK: - setConstraints
+
 extension StartWorkoutViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([

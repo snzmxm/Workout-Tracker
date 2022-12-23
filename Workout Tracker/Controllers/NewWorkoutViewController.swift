@@ -8,8 +8,12 @@
 import UIKit
 
 class NewWorkoutViewController: UIViewController {
-    
-    private let newWorkoutLabel = UILabel(text: "NEW WORKOUT", font: .robotoMedium24(), textColor: .specialGray)
+
+    //MARK: - Creating Elements
+
+    private let newWorkoutLabel = UILabel(text: "NEW WORKOUT",
+                                          font: .robotoMedium24(),
+                                          textColor: .specialGray)
     
     private let nameLabel = UILabel(text: "Name")
     private let dateAndRepeatLabel = UILabel(text: "Date and repeat")
@@ -55,10 +59,13 @@ class NewWorkoutViewController: UIViewController {
     
     private let dateAndRepeatStackView = DateAndRepeatView()
     private let repsOrTimerStavkView = RepsOrTimerView()
-    
+
+    //MARK: - Life Cycle
+
     override func viewDidLayoutSubviews() {
         closeButton.layer.cornerRadius = closeButton.frame.width / 2
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,8 +74,9 @@ class NewWorkoutViewController: UIViewController {
         setDelegates()
         addTaps()
     }
-    
-    //Добавление на главный экран(вью)
+
+    //MARK: - Hierarchy View
+
     private func setupViews() {
         view.backgroundColor = .specialBackground
         
@@ -82,7 +90,9 @@ class NewWorkoutViewController: UIViewController {
         view.addSubview(repsOrTimerStavkView)
         view.addSubview(saveButton)
     }
-    
+
+    //MARK: - Methods
+
     private func setDelegates() {
         nameTextField.delegate = self
     }
@@ -167,12 +177,15 @@ class NewWorkoutViewController: UIViewController {
 
     }
 }
+
 //MARK: - UITextViewDelegate
+
 extension NewWorkoutViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         nameTextField.resignFirstResponder()
     }
 }
+
 //MARK: - SetConstrains
 
 extension NewWorkoutViewController {

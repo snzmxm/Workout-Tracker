@@ -9,27 +9,21 @@ import UIKit
 
 class OnboardingCollectionViewCell: UICollectionViewCell {
 
+    //MARK: - Creating Elements
+
     private let backgroundImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-//        imageView.image = UIImage(named: "onboardingSecond")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private let topLabel: UILabel = {
-       let label = UILabel()
-//        label.text = "Have a good health"
-        label.textColor = .specialGreen
-        label.font = .robotoBold24()
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let topLabel = UILabel(font: .robotoBold24(),
+                                   textColor: .specialGreen,
+                                   textAlignment: .center)
 
     private let bottomLabel: UILabel = {
        let label = UILabel()
-//        label.text = "Bad body shape, poor sleep, lack of strength, weight gain, weak bones, easily traumatized body, depressed, stressed, poor metabolism, poor resistance"
         label.textColor = .white
         label.font = .robotoMedium16()
         label.textAlignment = .center
@@ -38,6 +32,8 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    //MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -49,6 +45,8 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //MARK: - Hierarchy View
+    
     private func setupViews() {
         backgroundColor = .specialGreen
 
@@ -58,11 +56,15 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
 
     }
 
+    //MARK: - Methods
+
     func cellConfigure(model: OnboardingStruct) {
         topLabel.text = model.topLabel
         bottomLabel.text = model.bottomLabel
         backgroundImageView.image = model.image
     }
+
+    //MARK: - setConstraints
 
     private func setConstraints() {
 

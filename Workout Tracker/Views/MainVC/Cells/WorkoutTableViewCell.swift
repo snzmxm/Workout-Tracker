@@ -13,21 +13,11 @@ protocol StartWorkoutProtocol: AnyObject {
 
 class WorkoutTableViewCell: UITableViewCell {
 
-    private let backgroundCell: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 10
-        view.backgroundColor = .specialBrown
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    //MARK: - Creating Elements
 
-    private let workoutBackgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .specialBackground
-        view.layer.cornerRadius = 20
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let backgroundCell = UIView(backgroundColor: .specialBrown, cornerRadius: 10)
+
+    private let workoutBackgroundView = UIView(backgroundColor: .specialBackground, cornerRadius: 20)
 
     private let workoutImageView: UIImageView = {
         let imageView = UIImageView()
@@ -66,6 +56,8 @@ class WorkoutTableViewCell: UITableViewCell {
     var workoutModel = WorkoutModel()
     weak var cellStartWorkoutDelegate: StartWorkoutProtocol?
 
+    //MARK: - Life Cycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -77,6 +69,8 @@ class WorkoutTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //MARK: - Hierarchy View
+    
     private func setupViews() {
         backgroundColor = .clear
         selectionStyle = .none
@@ -92,6 +86,8 @@ class WorkoutTableViewCell: UITableViewCell {
         addSubview(labelStackView)
         contentView.addSubview(startButton)
     }
+
+    //MARK: - Methods
 
     @objc private func startButtonTapped() {
         cellStartWorkoutDelegate?.startButtonTaped(model: workoutModel)
@@ -128,6 +124,8 @@ class WorkoutTableViewCell: UITableViewCell {
         workoutImageView.image = image.withRenderingMode(.alwaysTemplate)
     }
 }
+
+//MARK: - setConstraints
 
 extension WorkoutTableViewCell {
     private func setConstraints() {

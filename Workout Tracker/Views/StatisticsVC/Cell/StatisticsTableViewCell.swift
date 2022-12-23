@@ -9,22 +9,27 @@ import UIKit
 
 class StatisticsTableViewCell: UITableViewCell {
 
-    private let nameWorkoutLabel = UILabel(text: "Biceps", font: .robotoMedium24(), textColor: .specialGray, textAlignment: .left)
+    //MARK: - Creating Elements
+    
+    private let nameWorkoutLabel = UILabel(text: "Biceps",
+                                           font: .robotoMedium24(),
+                                           textColor: .specialGray,
+                                           textAlignment: .left)
 
     private let beforeLabel = UILabel(text: "Before: 18")
     private let nowLabel = UILabel(text: "Now: 20")
 
-    private let differenceLabel = UILabel(text: "+2", font: .robotoMedium24(), textColor: .specialGreen, textAlignment: .right)
+    private let differenceLabel = UILabel(text: "+2",
+                                          font: .robotoMedium24(),
+                                          textColor: .specialGreen,
+                                          textAlignment: .right)
 
     private var labelStackView = UIStackView()
 
-    private let lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .specialLine
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let lineView = UIView(backgroundColor: .specialLine)
 
+    //MARK: - Life Cycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -36,6 +41,8 @@ class StatisticsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //MARK: - Hierarchy View
+    
     private func setupViews() {
         backgroundColor = .clear
         selectionStyle = .none
@@ -43,12 +50,14 @@ class StatisticsTableViewCell: UITableViewCell {
         addSubview(nameWorkoutLabel)
 
         labelStackView = UIStackView(arrangedSubviews: [beforeLabel, nowLabel],
-                                axis: .horizontal,
-                                spacing: 10)
+                                     axis: .horizontal,
+                                     spacing: 10)
         addSubview(labelStackView)
         addSubview(differenceLabel)
         addSubview(lineView)
     }
+
+    //MARK: - Methods
 
     func cellConfigure(differenceWorkout: DifferenceWorkout) {
 
@@ -66,6 +75,8 @@ class StatisticsTableViewCell: UITableViewCell {
         }
     }
 }
+
+//MARK: - setConstraints
 
 extension StatisticsTableViewCell {
     private func setConstraints() {

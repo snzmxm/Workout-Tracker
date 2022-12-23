@@ -9,12 +9,16 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
 
+    //MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTubBar()
         setupViews()
     }
+    
+    //MARK: - Methods
 
     private func setupTubBar() {
         tabBar.backgroundColor = .specialTabBar
